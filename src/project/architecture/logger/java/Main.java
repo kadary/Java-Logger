@@ -1,4 +1,4 @@
-package project.architecure.logger.java;
+package project.architecture.logger.java;
 
 public class Main {
 
