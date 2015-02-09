@@ -7,11 +7,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * Config module : Read configuration from Properties local file
+ * @author mhgeay
+ * @version 1.0
+ */
 public class ConfigFromProperties extends AbstractConfigurator {
 	
 	private Properties configProp = new Properties();
 	Map<String,String> config = new HashMap<String,String>();
 
+	/**
+	 * Return the content of Properties file within a Map collection
+	 * @param NONE
+	 * @return MAP config
+	 */
 	@Override
 	public Map<String, String> getConfig() {
 		
