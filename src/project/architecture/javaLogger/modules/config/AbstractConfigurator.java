@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.config;
+package project.architecture.javaLogger.modules.config;
 
 import java.util.Map;
 

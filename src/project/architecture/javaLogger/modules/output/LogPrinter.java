@@ -1,16 +1,17 @@
-package project.architecture.logger.java;
+package project.architecture.javaLogger.modules.output;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class LogPrinter {
-	
+	/*
 		LogTarget logtarget;
 		
 		public LogPrinter(LogTarget t)
 		{
 				this.logtarget = t;
 		}
+		*/
 
 	
 		//Si target est la "console" on fait un System print ln

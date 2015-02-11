@@ -1,4 +1,4 @@
-package project.architecture.logger.java;
+package project.architecture.javaLogger.modules.output;
 
 public class LogWriterTest {
 	
