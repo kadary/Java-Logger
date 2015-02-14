@@ -1,14 +1,13 @@
 package project.architecture.javaLogger.modules.core;
 
 
+
 /**
  * @author kadary
  *
  */
 public interface Logger {
-
-	boolean isEnabled(String level);
-	
+		
 	boolean isInfoEnabled();
 	void info(String message);
 	

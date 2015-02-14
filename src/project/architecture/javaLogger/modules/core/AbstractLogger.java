@@ -2,7 +2,11 @@ package project.architecture.javaLogger.modules.core;
 
 import project.architecture.javaLogger.modules.config.ConfigFromProperties;
 import project.architecture.javaLogger.modules.config.Configurator;
+import project.architecture.javaLogger.modules.output.ConsoleHandler;
+import project.architecture.javaLogger.modules.output.DataBaseHandler;
+import project.architecture.javaLogger.modules.output.FileHandler;
 import project.architecture.javaLogger.modules.output.Handler;
+import project.architecture.javaLogger.modules.output.Target;
 
 
 /**
@@ -12,7 +16,9 @@ import project.architecture.javaLogger.modules.output.Handler;
 public class AbstractLogger implements Logger {
 	
 	private String name;
-	private Handler handler;
+	private Handler console = new ConsoleHandler();
+	private Handler file = new FileHandler();
+	private Handler db = new DataBaseHandler();
 	
 	public static final Configurator configuration = new ConfigFromProperties();
  
@@ -45,8 +51,17 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void info(String message) {
-		handler.log(Level.INFO, message);
+		if (isEnabled(Target.CONSOLE.name())) {
+			console.log(Level.INFO, message, this.getName(), Target.CONSOLE);
+		}
 		
+		if (isEnabled(Target.FILE.name())) {
+			file.log(Level.INFO, message, this.getName(), Target.FILE);
+		}
+		
+		if (isEnabled(Target.DB.name())) {
+			db.log(Level.INFO, message, this.getName(), Target.DB);
+		}
 	}
 
 	public boolean isWarnfoEnabled() {
@@ -54,7 +69,17 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void warn(String message) {
-		handler.log(Level.WARN, message);
+		if (isEnabled(Target.CONSOLE.name())) {
+			console.log(Level.WARN, message, this.getName(), Target.CONSOLE);
+		}
+		
+		if (isEnabled(Target.FILE.name())) {
+			file.log(Level.WARN, message, this.getName(), Target.FILE);
+		}
+		
+		if (isEnabled(Target.DB.name())) {
+			db.log(Level.WARN, message, this.getName(), Target.DB);
+		}
 	}
 
 	public boolean isErrorEnabled() {
@@ -62,7 +87,17 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void error(String message) {
-		handler.log(Level.ERROR, message);
+		if (isEnabled(Target.CONSOLE.name())) {
+			console.log(Level.ERROR, message, this.getName(), Target.CONSOLE);
+		}
+		
+		if (isEnabled(Target.FILE.name())) {
+			file.log(Level.ERROR, message, this.getName(), Target.FILE);
+		}
+		
+		if (isEnabled(Target.DB.name())) {
+			db.log(Level.ERROR, message, this.getName(), Target.DB);
+		}
 	}
 
 	public boolean isDebugEnabled() {
@@ -70,14 +105,16 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void debug(String message) {
-		handler.log(Level.DEBUG, message);
-	}
-
-	public Handler getHandler() {
-		return handler;
-	}
-
-	public void setHandler(Handler handler) {
-		this.handler = handler;
+		if (isEnabled(Target.CONSOLE.name())) {
+			console.log(Level.DEBUG, message, this.getName(), Target.CONSOLE);
+		}
+		
+		if (isEnabled(Target.FILE.name())) {
+			file.log(Level.DEBUG, message, this.getName(), Target.FILE);
+		}
+		
+		if (isEnabled(Target.DB.name())) {
+			db.log(Level.DEBUG, message, this.getName(), Target.DB);
+		}
 	}
 }

@@ -10,7 +10,11 @@ import project.architecture.javaLogger.modules.core.Level;
  *
  */
 public interface Handler {
-
-	void log(Level info, String message);
+	
+	void log(Level level, String message, String loggerName, Target target);
+	
+	boolean isLevelEnabled();
+	boolean isDateEnabled();
+	boolean isClassNameEnabled();
 
 }
