@@ -15,7 +15,7 @@ import java.util.Properties;
 public class ConfigFromProperties extends AbstractConfigurator {
 	
 	private Properties configProp = new Properties();
-	Map<String,String> config = new HashMap<String,String>();
+	Map<String,String> config = new HashMap<String,String>();;
 
 	/**
 	 * Return the content of Properties file within a Map collection
@@ -23,9 +23,9 @@ public class ConfigFromProperties extends AbstractConfigurator {
 	 * @return MAP config
 	 */
 	@Override
-	public Map<String, String> getConfig() {
+	public void setConfig() {
 		
-		//setConfigFilePath("/Users/mhgeay/Documents/eclipse/testA/src/com/esiea/tp/config.properties");
+		setConfigFilePath("JavaLogger.properties");
 		
 		FileInputStream configFileStream;
 		try {
@@ -47,7 +47,6 @@ public class ConfigFromProperties extends AbstractConfigurator {
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
-		return config;
+		settings = config;
 	}
-
 }

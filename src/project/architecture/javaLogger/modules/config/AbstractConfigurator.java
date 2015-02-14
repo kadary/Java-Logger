@@ -8,11 +8,12 @@ import java.util.Map;
  * @author mhgeay
  * @version 1.0
  */
-public abstract class AbstractConfigurator {
+public abstract class AbstractConfigurator implements Configurator {
 	
 	private static String path;
+	public static Map<String, String> settings = null;
 
-	public abstract Map<String,String> getConfig();
+	public abstract void setConfig();
 
 	/**
 	 * Return the local path of configuration file
@@ -20,7 +21,7 @@ public abstract class AbstractConfigurator {
 	 * @param NONE
 	 * @return File path
 	 */
-	public static String getConfigFilePath() {
+	public String getConfigFilePath() {
 		return path;
 	}
 
@@ -30,8 +31,12 @@ public abstract class AbstractConfigurator {
 	 * @param Local file path
 	 * @return NONE
 	 */
-	public static void setConfigFilePath(String path) {
+	public void setConfigFilePath(String path) {
 		AbstractConfigurator.path = path;
+	}
+	
+	public Map<String, String> getSettings(){
+		return settings;
 	}
 
 }

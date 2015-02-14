@@ -1,5 +1,9 @@
 package project.architecture.javaLogger.modules.core;
 
+import project.architecture.javaLogger.modules.config.ConfigFromProperties;
+import project.architecture.javaLogger.modules.config.Configurator;
+import project.architecture.javaLogger.modules.output.Handler;
+
 
 /**
  * @author kadary
@@ -8,16 +12,13 @@ package project.architecture.javaLogger.modules.core;
 public class AbstractLogger implements Logger {
 	
 	private String name;
-	private Level level;
-    
-    public AbstractLogger() {
-        this.setName(getClass().getName());
-        this.setLevel(null);
-    }
-    
-    public AbstractLogger(String name, Level level) {
+	private Handler handler;
+	
+	public static final Configurator configuration= new ConfigFromProperties();
+     
+    public AbstractLogger(String name) {
         this.setName(name);
-        this.setLevel(level);
+        configuration.setConfig();
     }
 
 	public String getName() {
@@ -28,17 +29,14 @@ public class AbstractLogger implements Logger {
 		this.name = name;
 	}
 
-	public Level getLevel() {
-		return level;
-	}
-
-	public void setLevel(Level level) {
-		this.level = level;
-	}
-
-	public boolean isEnabled(String level) {
-		// TODO Checked from config files if the level is enabled of not
-		return false;
+	public boolean isEnabled(String level) {	
+		String value;
+		boolean result = false;
+		if (configuration.getSettings().get(level) != null) {
+			value = configuration.getSettings().get(level);
+			result = value.equalsIgnoreCase("true") ? true : false;
+		}
+		return result;
 	}
 
 	public boolean isInfoEnabled() {
@@ -46,7 +44,7 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void info(String message) {
-		// TODO Auto-generated method stub
+		handler.log(Level.INFO, message);
 		
 	}
 
@@ -55,8 +53,7 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void warn(String message) {
-		// TODO Auto-generated method stub
-		
+		handler.log(Level.WARN, message);
 	}
 
 	public boolean isErrorEnabled() {
@@ -64,8 +61,7 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void error(String message) {
-		// TODO Auto-generated method stub
-		
+		handler.log(Level.ERROR, message);
 	}
 
 	public boolean isDebugEnabled() {
@@ -73,7 +69,14 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void debug(String message) {
-		// TODO Auto-generated method stub
-		
+		handler.log(Level.DEBUG, message);
+	}
+
+	public Handler getHandler() {
+		return handler;
+	}
+
+	public void setHandler(Handler handler) {
+		this.handler = handler;
 	}
 }
