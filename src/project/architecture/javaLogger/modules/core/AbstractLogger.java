@@ -14,8 +14,9 @@ public class AbstractLogger implements Logger {
 	private String name;
 	private Handler handler;
 	
-	public static final Configurator configuration= new ConfigFromProperties();
-     
+	public static final Configurator configuration = new ConfigFromProperties();
+ 
+    
     public AbstractLogger(String name) {
         this.setName(name);
         configuration.setConfig();
