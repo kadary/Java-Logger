@@ -64,7 +64,7 @@ public class AbstractLogger implements Logger {
 		}
 	}
 
-	public boolean isWarnfoEnabled() {
+	public boolean isWarnEnabled() {
 		return isEnabled(Level.WARN.getName());
 	}
 

@@ -11,10 +11,20 @@ public class Main {
 		Logger logger = logManager.getLogger();
 		Logger logger1 = logManager.getLogger("Kadary");
 		
-		logger.info("Ceci est un message très très long car on veut tester l'indentation du LoggerWriter pour pouvoir réajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. ");
-		logger1.debug("Salut");
-		logger.warn("Test de la librairie");
-		logger1.error("Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+		if (logger.isInfoEnabled()) {
+			logger.info("Ceci est un message très très long car on veut tester l'indentation du LoggerWriter pour pouvoir réajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. ");
+		}
+		if (logger1.isDebugEnabled()) {
+			logger1.debug("Salut");
+		}
+		
+		if (logger.isWarnEnabled()) {
+			logger.warn("Test de la librairie");
+		}
+		
+		if (logger1.isErrorEnabled()) {
+			logger1.error("Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+		}
 	}
 
 }

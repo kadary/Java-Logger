@@ -11,7 +11,7 @@ public interface Logger {
 	boolean isInfoEnabled();
 	void info(String message);
 	
-	boolean isWarnfoEnabled();
+	boolean isWarnEnabled();
 	void warn(String message);
 	
 	boolean isErrorEnabled();
