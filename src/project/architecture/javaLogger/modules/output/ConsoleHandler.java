@@ -8,8 +8,9 @@ import java.util.Map;
 import project.architecture.javaLogger.modules.core.Level;
 
 /**
- * @author Adeline, kadary
- *
+ * Output log through console
+ * @author adepolas, kadary
+ * @version 1.0
  */
 public class ConsoleHandler extends AbstractHandler {
 	@Override

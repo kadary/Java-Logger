@@ -3,8 +3,9 @@ package project.architecture.javaLogger.modules.output;
 import project.architecture.javaLogger.modules.core.Level;
 
 /**
- * @author kadary
- *
+ * Storage on file
+ * @author kadary, adepolas
+ * @version 1.0
  */
 public class FileHandler extends AbstractHandler {
 

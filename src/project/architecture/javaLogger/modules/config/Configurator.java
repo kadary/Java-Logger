@@ -2,6 +2,11 @@ package project.architecture.javaLogger.modules.config;
 
 import java.util.Map;
 
+/**
+ * Interface of Config module
+ * @author kadary
+ * @version 1.0
+ */
 public interface Configurator {
 	
 	public abstract void setConfig();

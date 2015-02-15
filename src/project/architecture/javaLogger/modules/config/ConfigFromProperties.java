@@ -36,7 +36,6 @@ public class ConfigFromProperties extends AbstractConfigurator {
 				  if(!configProp.isEmpty()) {
 					  for(String key : configProp.stringPropertyNames()) {
 						  String value = configProp.getProperty(key);
-						  //System.out.println(key + " => " + value);
 						  config.put(key, value);
 						}
 				  }

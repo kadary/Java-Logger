@@ -5,7 +5,7 @@ import project.architecture.javaLogger.modules.core.LogManager;
 
 /**
  * @author kadary
- *
+ * @version 1.0
  */
 public abstract class AbstractHandler implements Handler {
 

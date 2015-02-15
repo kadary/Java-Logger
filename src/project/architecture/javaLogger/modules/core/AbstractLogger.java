@@ -9,7 +9,7 @@ import project.architecture.javaLogger.modules.output.Target;
 
 /**
  * @author kadary
- *
+ * @version 1.0
  */
 public class AbstractLogger implements Logger {
 	
@@ -116,5 +116,26 @@ public class AbstractLogger implements Logger {
 		if (isEnabled(Target.DB.name())) {
 			db.log(Level.DEBUG, message, this.getFQCN(), Target.DB);
 		}
+	}
+
+	@Override
+	public boolean isTraceEnabled() {
+		return isEnabled(Level.TRACE.getName());
+	}
+
+	@Override
+	public void trace(String message) {
+		if (isEnabled(Target.CONSOLE.name())) {
+			console.log(Level.TRACE, message, this.getFQCN(), Target.CONSOLE);
+		}
+		
+		if (isEnabled(Target.FILE.name())) {
+			file.log(Level.TRACE, message, this.getFQCN(), Target.FILE);
+		}
+		
+		if (isEnabled(Target.DB.name())) {
+			db.log(Level.TRACE, message, this.getFQCN(), Target.DB);
+		}
+		
 	}
 }
