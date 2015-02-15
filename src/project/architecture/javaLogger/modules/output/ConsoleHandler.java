@@ -8,7 +8,7 @@ import java.util.Map;
 import project.architecture.javaLogger.modules.core.Level;
 
 /**
- * @author kadary
+ * @author Adeline, kadary
  *
  */
 public class ConsoleHandler extends AbstractHandler {

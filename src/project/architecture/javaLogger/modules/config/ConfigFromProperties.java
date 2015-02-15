@@ -9,7 +9,7 @@ import java.util.Properties;
 
 /**
  * Config module : Read configuration from Properties local file
- * @author mhgeay
+ * @author mhgeay, kadary
  * @version 1.0
  */
 public class ConfigFromProperties extends AbstractConfigurator {
