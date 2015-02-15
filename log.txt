@@ -1,0 +1,91 @@
+15-02-15 23:45:52|Adeline|WARN|Message de warning !!!! Ca fonctionne ou pas ?15-02-15 23:47:06|project.architecture.javaLogger.test.Main|INFO|Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 15-02-15 23:47:06|Kadary|DEBUG|Salut15-02-15 23:47:06|project.architecture.javaLogger.test.Main|WARN|Test de la librairie15-02-15 23:47:06|Kadary|ERROR|Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu15-02-15 23:47:06|Adeline|WARN|Message de warning !!!! Ca fonctionne ou pas ?15-02-15 23:47:22|project.architecture.javaLogger.test.Main|INFO|Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+15-02-15 23:47:22|Kadary|DEBUG|Salut
+15-02-15 23:47:22|project.architecture.javaLogger.test.Main|WARN|Test de la librairie
+15-02-15 23:47:22|Kadary|ERROR|Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+15-02-15 23:47:22|Adeline|WARN|Message de warning !!!! Ca fonctionne ou pas ?
+
+%1snull|project.architecture.javaLogger.test.Main|INFO|Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+%1snull|Kadary|DEBUG|Salut
+%1snull|project.architecture.javaLogger.test.Main|WARN|Test de la librairie
+%1snull|Kadary|ERROR|Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+%1snull|Adeline|WARN|Message de warning !!!! Ca fonctionne ou pas ?
+null|project.architecture.javaLogger.test.Main|INFO|Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+null|Kadary|DEBUG|Salut
+null|project.architecture.javaLogger.test.Main|WARN|Test de la librairie
+null|Kadary|ERROR|Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+null|Adeline|WARN|Message de warning !!!! Ca fonctionne ou pas ?
+
+
+
+
+
+INFO	|project.architecture.javaLogger.test.Main	|
+DEBUG	|Kadary	|
+WARN	|project.architecture.javaLogger.test.Main	|
+ERROR	|Kadary	|
+WARN	|Adeline	|
+INFO	|	project.architecture.javaLogger.test.Main	|	
+DEBUG	|	Kadary	|	
+WARN	|	project.architecture.javaLogger.test.Main	|	
+ERROR	|	Kadary	|	
+WARN	|	Adeline	|	
+INFO	|	project.architecture.javaLogger.test.Main	|	
+DEBUG	|	Kadary	|	
+WARN	|	project.architecture.javaLogger.test.Main	|	
+ERROR	|	Kadary	|	
+WARN	|	Adeline	|	
+INFO	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	Kadary	|	Salut
+WARN	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
+INFO	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	Kadary	|	Salut
+WARN	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
+INFO	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	Kadary	|	Salut
+WARN	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
+INFO	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	Kadary	|	Salut
+WARN	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
+INFO	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	Kadary	|	Salut
+WARN	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
+INFO	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	Kadary	|	Salut
+WARN	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
+INFO	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	Kadary	|	Salut
+WARN	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
+INFO	|	16-02-15 00:03:45	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	16-02-15 00:03:45	|	Kadary	|	Salut
+WARN	|	16-02-15 00:03:45	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	16-02-15 00:03:45	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	16-02-15 00:03:45	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
+INFO	|	16-02-15 00:08:19	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	16-02-15 00:08:19	|	Kadary	|	Salut
+WARN	|	16-02-15 00:08:19	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	16-02-15 00:08:19	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	16-02-15 00:08:19	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
+INFO	|	16-02-15 00:08:28	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	16-02-15 00:08:28	|	Kadary	|	Salut
+WARN	|	16-02-15 00:08:28	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	16-02-15 00:08:28	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	16-02-15 00:08:28	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
+INFO	|	project.architecture.javaLogger.test.Main	|	Ceci est un message tr�s tr�s long car on veut tester l'indentation du LoggerWriter pour pouvoir r�ajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. 
+DEBUG	|	Kadary	|	Salut
+WARN	|	project.architecture.javaLogger.test.Main	|	Test de la librairie
+ERROR	|	Kadary	|	Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+WARN	|	Adeline	|	Message de warning !!!! Ca fonctionne ou pas ?
