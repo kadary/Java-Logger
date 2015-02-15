@@ -15,7 +15,8 @@ import java.util.Properties;
 public class ConfigFromProperties extends AbstractConfigurator {
 	
 	private Properties configProp = new Properties();
-	Map<String,String> config = new HashMap<String,String>();;
+	Map<String,String> config = new HashMap<String,String>();
+	
 
 	/**
 	 * Return the content of Properties file within a Map collection
@@ -49,4 +50,5 @@ public class ConfigFromProperties extends AbstractConfigurator {
 		}
 		settings = config;
 	}
+
 }

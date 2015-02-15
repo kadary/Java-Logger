@@ -1,7 +1,5 @@
 package project.architecture.javaLogger.modules.core;
 
-import project.architecture.javaLogger.modules.config.ConfigFromProperties;
-import project.architecture.javaLogger.modules.config.Configurator;
 import project.architecture.javaLogger.modules.output.ConsoleHandler;
 import project.architecture.javaLogger.modules.output.DataBaseHandler;
 import project.architecture.javaLogger.modules.output.FileHandler;
@@ -18,14 +16,10 @@ public class AbstractLogger implements Logger {
 	private String fqcn;
 	private Handler console = new ConsoleHandler();
 	private Handler file = new FileHandler();
-	private Handler db = new DataBaseHandler();
-	
-	public static final Configurator configuration = new ConfigFromProperties();
- 
+	private Handler db = new DataBaseHandler(); 
     
     public AbstractLogger(String name) {
         this.setFQCN(name);
-        configuration.setConfig();
     }
 
 	public String getFQCN() {
@@ -39,9 +33,15 @@ public class AbstractLogger implements Logger {
 	public boolean isEnabled(String level) {	
 		String value;
 		boolean result = false;
-		if (configuration.getSettings().get(level) != null) {
-			value = configuration.getSettings().get(level);
-			result = value.equalsIgnoreCase("true") ? true : false;
+		try {
+			if (LogManager.settings.get(level) != null) {
+				value = LogManager.settings.get(level);
+				result = value.equalsIgnoreCase("true") ? true : false;
+			}
+		}
+		catch (NullPointerException e) {
+			System.out.print("Settings not set! please check your config: ");
+			e.printStackTrace();
 		}
 		return result;
 	}
