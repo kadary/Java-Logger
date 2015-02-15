@@ -16,7 +16,7 @@ public abstract class AbstractHandler implements Handler {
 		configuration.setConfig();
 	}
 	
-	public abstract void log(Level info, String message, String loggerName, Target target);
+	public abstract void log(Level level, String message, String fqcn, Target target);
 	
 	
 	public boolean isEnabled(String token) {	
@@ -38,7 +38,7 @@ public abstract class AbstractHandler implements Handler {
 	}
 
 	public boolean isClassNameEnabled() {
-		return isEnabled("CLASS");
+		return isEnabled("FQCN");
 	}
 	
 }

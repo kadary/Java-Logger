@@ -15,7 +15,7 @@ import project.architecture.javaLogger.modules.output.Target;
  */
 public class AbstractLogger implements Logger {
 	
-	private String name;
+	private String fqcn;
 	private Handler console = new ConsoleHandler();
 	private Handler file = new FileHandler();
 	private Handler db = new DataBaseHandler();
@@ -24,16 +24,16 @@ public class AbstractLogger implements Logger {
  
     
     public AbstractLogger(String name) {
-        this.setName(name);
+        this.setFQCN(name);
         configuration.setConfig();
     }
 
-	public String getName() {
-		return name;
+	public String getFQCN() {
+		return fqcn;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFQCN(String fqcn) {
+		this.fqcn = fqcn;
 	}
 
 	public boolean isEnabled(String level) {	
@@ -52,15 +52,15 @@ public class AbstractLogger implements Logger {
 
 	public void info(String message) {
 		if (isEnabled(Target.CONSOLE.name())) {
-			console.log(Level.INFO, message, this.getName(), Target.CONSOLE);
+			console.log(Level.INFO, message, this.getFQCN(), Target.CONSOLE);
 		}
 		
 		if (isEnabled(Target.FILE.name())) {
-			file.log(Level.INFO, message, this.getName(), Target.FILE);
+			file.log(Level.INFO, message, this.getFQCN(), Target.FILE);
 		}
 		
 		if (isEnabled(Target.DB.name())) {
-			db.log(Level.INFO, message, this.getName(), Target.DB);
+			db.log(Level.INFO, message, this.getFQCN(), Target.DB);
 		}
 	}
 
@@ -70,15 +70,15 @@ public class AbstractLogger implements Logger {
 
 	public void warn(String message) {
 		if (isEnabled(Target.CONSOLE.name())) {
-			console.log(Level.WARN, message, this.getName(), Target.CONSOLE);
+			console.log(Level.WARN, message, this.getFQCN(), Target.CONSOLE);
 		}
 		
 		if (isEnabled(Target.FILE.name())) {
-			file.log(Level.WARN, message, this.getName(), Target.FILE);
+			file.log(Level.WARN, message, this.getFQCN(), Target.FILE);
 		}
 		
 		if (isEnabled(Target.DB.name())) {
-			db.log(Level.WARN, message, this.getName(), Target.DB);
+			db.log(Level.WARN, message, this.getFQCN(), Target.DB);
 		}
 	}
 
@@ -88,15 +88,15 @@ public class AbstractLogger implements Logger {
 
 	public void error(String message) {
 		if (isEnabled(Target.CONSOLE.name())) {
-			console.log(Level.ERROR, message, this.getName(), Target.CONSOLE);
+			console.log(Level.ERROR, message, this.getFQCN(), Target.CONSOLE);
 		}
 		
 		if (isEnabled(Target.FILE.name())) {
-			file.log(Level.ERROR, message, this.getName(), Target.FILE);
+			file.log(Level.ERROR, message, this.getFQCN(), Target.FILE);
 		}
 		
 		if (isEnabled(Target.DB.name())) {
-			db.log(Level.ERROR, message, this.getName(), Target.DB);
+			db.log(Level.ERROR, message, this.getFQCN(), Target.DB);
 		}
 	}
 
@@ -106,15 +106,15 @@ public class AbstractLogger implements Logger {
 
 	public void debug(String message) {
 		if (isEnabled(Target.CONSOLE.name())) {
-			console.log(Level.DEBUG, message, this.getName(), Target.CONSOLE);
+			console.log(Level.DEBUG, message, this.getFQCN(), Target.CONSOLE);
 		}
 		
 		if (isEnabled(Target.FILE.name())) {
-			file.log(Level.DEBUG, message, this.getName(), Target.FILE);
+			file.log(Level.DEBUG, message, this.getFQCN(), Target.FILE);
 		}
 		
 		if (isEnabled(Target.DB.name())) {
-			db.log(Level.DEBUG, message, this.getName(), Target.DB);
+			db.log(Level.DEBUG, message, this.getFQCN(), Target.DB);
 		}
 	}
 }

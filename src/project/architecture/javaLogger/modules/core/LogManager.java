@@ -10,39 +10,39 @@ import java.util.Map;
  */
 public class LogManager {
 	private Map<String, Logger> loggers = new HashMap<String, Logger>();
-	private String loggerName;
+	private String fqcn;
 	
 	
 	public LogManager() {
-		loggerName = Thread. currentThread().getStackTrace()[2].getClassName();
+		fqcn = Thread. currentThread().getStackTrace()[2].getClassName();
 	}
 	
 	public Logger getLogger(String name) {
 		if (name != null && name != "") {
-			this.loggerName = name;
+			this.fqcn = name;
 		}
-		if (loggers.containsKey(loggerName)) {
-			return loggers.get(loggerName);
+		if (loggers.containsKey(fqcn)) {
+			return loggers.get(fqcn);
 		}
 		else 
-			loggers.put(loggerName, new ExtendedLogger(loggerName));
-			return loggers.get(loggerName);
+			loggers.put(fqcn, new ExtendedLogger(fqcn));
+			return loggers.get(fqcn);
 	}
 	
 	public Logger getLogger() {
-		return this.getLogger(loggerName);
+		return this.getLogger(fqcn);
 	}
 	
 	public void closeLogger(String name) {
 		if (name != null && name != "") {
 			if(loggers.containsKey(name)) {
-				loggers.remove(loggerName);
+				loggers.remove(name);
 			}
 		}
 	}
 	
 	public void closeLogger() {
-		this.closeLogger(loggerName);
+		this.closeLogger(fqcn);
 	}
 
 }

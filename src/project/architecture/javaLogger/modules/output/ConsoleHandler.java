@@ -13,7 +13,7 @@ import project.architecture.javaLogger.modules.core.Level;
  */
 public class ConsoleHandler extends AbstractHandler {
 	@Override
-	public void log(Level level, String message, String loggerName, Target target){
+	public void log(Level level, String message, String fqcn, Target target){
 		Map<String, String> log = new HashMap<String, String>(); 
 		if(target.equals(Target.CONSOLE)) {
 			Date date = new Date();
@@ -28,13 +28,13 @@ public class ConsoleHandler extends AbstractHandler {
 			}
 
 			if(isClassNameEnabled()) {
-				log.put("class", loggerName);
+				log.put("fqcn", fqcn);
 			}
 
 
 			log.put("message", message);
 
-			System.out.printf("%-5s %1s %-52s %5s %-5s %1s %-6s%n", log.get("date"), "|", log.get("class"), "|", log.get("level"), "|", log.get("message"));
+			System.out.printf("%-5s %1s %-52s %5s %-5s %1s %-6s%n", log.get("date"), "|", log.get("fqcn"), "|", log.get("level"), "|", log.get("message"));
 		}
 
 	}

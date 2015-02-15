@@ -22,6 +22,7 @@ public class Main {
 			logger.warn("Test de la librairie");
 		}
 		
+		logManager.closeLogger("Kadary");
 		if (logger1.isErrorEnabled()) {
 			logger1.error("Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
 		}
