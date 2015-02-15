@@ -9,7 +9,7 @@ public class Main {
 
 		LogManager logManager = new LogManager();
 		Logger logger = logManager.getLogger();
-		Logger logger1 = logManager.getLogger("Kadary");
+		Logger logger1 = logManager.getLogger("test of custom FQCN");
 		
 		if (logger.isInfoEnabled()) {
 			logger.info("Ceci est un message très très long car on veut tester l'indentation du LoggerWriter pour pouvoir réajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. ");
@@ -22,7 +22,7 @@ public class Main {
 			logger.warn("Test de la librairie");
 		}
 		
-		logManager.closeLogger("Kadary");
+		//logManager.closeLogger("Kadary");
 		if (logger1.isErrorEnabled()) {
 			logger1.error("Whaouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
 		}

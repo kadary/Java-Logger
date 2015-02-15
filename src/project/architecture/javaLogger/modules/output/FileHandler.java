@@ -11,7 +11,7 @@ public class FileHandler extends AbstractHandler {
 	@Override
 	public void log(Level level, String message, String fqcn, Target target) {
 		if(target.equals(Target.FILE)) {
-			
+			//TODO Adeline ton code doit se trouver ici
 		}
 		
 	}
