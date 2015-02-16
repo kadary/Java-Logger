@@ -68,7 +68,7 @@ public class FileHandler extends AbstractHandler {
 				
 				
 				if (limitSize ==  0 || logFile.length() <= limitSize) {
-					System.out.println("Log file size: " + logFile.length() + "Limit Size: " + limitSize);
+					//System.out.println("Log file size: " + logFile.length() + "Limit Size: " + limitSize);
 					if(log.get("DATE") != null) {
 						fw.write(String.format("%-5s %1s", log.get("DATE"), "|"));
 					}
@@ -85,7 +85,7 @@ public class FileHandler extends AbstractHandler {
 					
 					fw.close();
 					
-					System.out.println("Log file size: " + logFile.length() + "Limit Size: " + limitSize);
+					//System.out.println("Log file size: " + logFile.length() + "Limit Size: " + limitSize);
 				}
 				
 				else
