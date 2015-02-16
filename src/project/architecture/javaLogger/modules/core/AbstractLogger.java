@@ -1,7 +1,5 @@
 package project.architecture.javaLogger.modules.core;
 
-import project.architecture.javaLogger.modules.config.ConfigFromProperties;
-import project.architecture.javaLogger.modules.config.Configurator;
 import project.architecture.javaLogger.modules.output.ConsoleHandler;
 import project.architecture.javaLogger.modules.output.DataBaseHandler;
 import project.architecture.javaLogger.modules.output.FileHandler;
@@ -15,33 +13,35 @@ import project.architecture.javaLogger.modules.output.Target;
  */
 public class AbstractLogger implements Logger {
 	
-	private String name;
+	private String fqcn;
 	private Handler console = new ConsoleHandler();
 	private Handler file = new FileHandler();
-	private Handler db = new DataBaseHandler();
-	
-	public static final Configurator configuration = new ConfigFromProperties();
- 
+	private Handler db = new DataBaseHandler(); 
     
     public AbstractLogger(String name) {
-        this.setName(name);
-        configuration.setConfig();
+        this.setFQCN(name);
     }
 
-	public String getName() {
-		return name;
+	public String getFQCN() {
+		return fqcn;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFQCN(String fqcn) {
+		this.fqcn = fqcn;
 	}
 
 	public boolean isEnabled(String level) {	
 		String value;
 		boolean result = false;
-		if (configuration.getSettings().get(level) != null) {
-			value = configuration.getSettings().get(level);
-			result = value.equalsIgnoreCase("true") ? true : false;
+		try {
+			if (LogManager.settings.get(level) != null) {
+				value = LogManager.settings.get(level);
+				result = value.equalsIgnoreCase("true") ? true : false;
+			}
+		}
+		catch (NullPointerException e) {
+			System.out.print("Settings not set! please check your config: ");
+			e.printStackTrace();
 		}
 		return result;
 	}
@@ -52,15 +52,15 @@ public class AbstractLogger implements Logger {
 
 	public void info(String message) {
 		if (isEnabled(Target.CONSOLE.name())) {
-			console.log(Level.INFO, message, this.getName(), Target.CONSOLE);
+			console.log(Level.INFO, message, this.getFQCN(), Target.CONSOLE);
 		}
 		
 		if (isEnabled(Target.FILE.name())) {
-			file.log(Level.INFO, message, this.getName(), Target.FILE);
+			file.log(Level.INFO, message, this.getFQCN(), Target.FILE);
 		}
 		
 		if (isEnabled(Target.DB.name())) {
-			db.log(Level.INFO, message, this.getName(), Target.DB);
+			db.log(Level.INFO, message, this.getFQCN(), Target.DB);
 		}
 	}
 
@@ -70,15 +70,15 @@ public class AbstractLogger implements Logger {
 
 	public void warn(String message) {
 		if (isEnabled(Target.CONSOLE.name())) {
-			console.log(Level.WARN, message, this.getName(), Target.CONSOLE);
+			console.log(Level.WARN, message, this.getFQCN(), Target.CONSOLE);
 		}
 		
 		if (isEnabled(Target.FILE.name())) {
-			file.log(Level.WARN, message, this.getName(), Target.FILE);
+			file.log(Level.WARN, message, this.getFQCN(), Target.FILE);
 		}
 		
 		if (isEnabled(Target.DB.name())) {
-			db.log(Level.WARN, message, this.getName(), Target.DB);
+			db.log(Level.WARN, message, this.getFQCN(), Target.DB);
 		}
 	}
 
@@ -88,15 +88,15 @@ public class AbstractLogger implements Logger {
 
 	public void error(String message) {
 		if (isEnabled(Target.CONSOLE.name())) {
-			console.log(Level.ERROR, message, this.getName(), Target.CONSOLE);
+			console.log(Level.ERROR, message, this.getFQCN(), Target.CONSOLE);
 		}
 		
 		if (isEnabled(Target.FILE.name())) {
-			file.log(Level.ERROR, message, this.getName(), Target.FILE);
+			file.log(Level.ERROR, message, this.getFQCN(), Target.FILE);
 		}
 		
 		if (isEnabled(Target.DB.name())) {
-			db.log(Level.ERROR, message, this.getName(), Target.DB);
+			db.log(Level.ERROR, message, this.getFQCN(), Target.DB);
 		}
 	}
 
@@ -106,15 +106,15 @@ public class AbstractLogger implements Logger {
 
 	public void debug(String message) {
 		if (isEnabled(Target.CONSOLE.name())) {
-			console.log(Level.DEBUG, message, this.getName(), Target.CONSOLE);
+			console.log(Level.DEBUG, message, this.getFQCN(), Target.CONSOLE);
 		}
 		
 		if (isEnabled(Target.FILE.name())) {
-			file.log(Level.DEBUG, message, this.getName(), Target.FILE);
+			file.log(Level.DEBUG, message, this.getFQCN(), Target.FILE);
 		}
 		
 		if (isEnabled(Target.DB.name())) {
-			db.log(Level.DEBUG, message, this.getName(), Target.DB);
+			db.log(Level.DEBUG, message, this.getFQCN(), Target.DB);
 		}
 	}
 }

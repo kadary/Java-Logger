@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import project.architecture.javaLogger.modules.core.Level;
+import project.architecture.javaLogger.modules.core.LogManager;
 
 /**
  * @author kadary
@@ -26,10 +27,6 @@ public class FileHandler extends AbstractHandler {
 			long now = date.getTime();
 			SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
 
-			if (isLevelEnabled()) {
-				log.put("level", level.getName());
-				indent = indent + level.getName() + "	|	";
-			}
 			if(isDateEnabled()) {
 				log.put("date", formater.format(now));
 				indent = indent + formater.format(now) + "	|	";
@@ -40,20 +37,25 @@ public class FileHandler extends AbstractHandler {
 				indent = indent + loggerName + "	|	";
 			}
 			
+			if (isLevelEnabled()) {
+				log.put("level", level.getName());
+				indent = indent + level.getName() + "	|	";
+			}
+			
 			log.put("message", message);
 			indent = indent + message;
 			
 			//recuperation dans properties du chemin pour le fichier ou ecrire
-			String filename = ""; // parser le fichier properties
+			String filename = LogManager.settings.get("FilePath");
 			
 			//Partie parsing manquante
 			
-			File f = new File ("log.txt");
+			File logFile = new File (filename);
 			//File f = new File (filename);
 			
 			try
 			{
-			    FileWriter fw = new FileWriter (f,true);
+			    FileWriter fw = new FileWriter (logFile,true);
 			    fw.write(indent+"\n");
 			    fw.close();
 			}

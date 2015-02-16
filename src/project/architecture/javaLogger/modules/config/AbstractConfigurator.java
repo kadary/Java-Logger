@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * Classe abstraite du module configuration
- * @author mhgeay
+ * @author mhgeay, kadary
  * @version 1.0
  */
 public abstract class AbstractConfigurator implements Configurator {

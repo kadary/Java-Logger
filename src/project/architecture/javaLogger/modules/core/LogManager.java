@@ -3,46 +3,56 @@ package project.architecture.javaLogger.modules.core;
 import java.util.HashMap;
 import java.util.Map;
 
+import project.architecture.javaLogger.modules.config.ConfigFromProperties;
+import project.architecture.javaLogger.modules.config.Configurator;
+
 
 /**
  * @author kadary
  *
  */
 public class LogManager {
-	private Map<String, Logger> loggers = new HashMap<String, Logger>();
-	private String loggerName;
 	
+	public static final Map<String,String> settings;
+	private Map<String, Logger> loggers = new HashMap<String, Logger>();
+	private String fqcn;
+	private static final Configurator configuration = new ConfigFromProperties();
+	
+	static {
+		configuration.setConfig();
+		settings = configuration.getSettings();
+	}
 	
 	public LogManager() {
-		loggerName = Thread. currentThread().getStackTrace()[2].getClassName();
+		fqcn = Thread. currentThread().getStackTrace()[2].getClassName();
 	}
 	
 	public Logger getLogger(String name) {
 		if (name != null && name != "") {
-			this.loggerName = name;
+			this.fqcn = name;
 		}
-		if (loggers.containsKey(loggerName)) {
-			return loggers.get(loggerName);
+		if (loggers.containsKey(fqcn)) {
+			return loggers.get(fqcn);
 		}
 		else 
-			loggers.put(loggerName, new ExtendedLogger(loggerName));
-			return loggers.get(loggerName);
+			loggers.put(fqcn, new ExtendedLogger(fqcn));
+			return loggers.get(fqcn);
 	}
 	
 	public Logger getLogger() {
-		return this.getLogger(loggerName);
+		return this.getLogger(fqcn);
 	}
 	
 	public void closeLogger(String name) {
 		if (name != null && name != "") {
 			if(loggers.containsKey(name)) {
-				loggers.remove(loggerName);
+				loggers.remove(name);
 			}
 		}
 	}
 	
 	public void closeLogger() {
-		this.closeLogger(loggerName);
+		this.closeLogger(fqcn);
 	}
 
 }

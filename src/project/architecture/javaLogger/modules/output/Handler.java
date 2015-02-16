@@ -11,7 +11,7 @@ import project.architecture.javaLogger.modules.core.Level;
  */
 public interface Handler {
 	
-	void log(Level level, String message, String loggerName, Target target);
+	void log(Level level, String message, String fqcn, Target target);
 	
 	boolean isLevelEnabled();
 	boolean isDateEnabled();

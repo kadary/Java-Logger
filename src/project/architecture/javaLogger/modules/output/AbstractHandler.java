@@ -1,44 +1,43 @@
 package project.architecture.javaLogger.modules.output;
 
-import project.architecture.javaLogger.modules.config.ConfigFromProperties;
-import project.architecture.javaLogger.modules.config.Configurator;
 import project.architecture.javaLogger.modules.core.Level;
+import project.architecture.javaLogger.modules.core.LogManager;
 
 /**
  * @author kadary
  *
  */
 public abstract class AbstractHandler implements Handler {
-	
-	public static final Configurator configuration = new ConfigFromProperties();
-	
-	public AbstractHandler() {
-		configuration.setConfig();
-	}
-	
-	public abstract void log(Level info, String message, String loggerName, Target target);
-	
-	
+
+	public abstract void log(Level level, String message, String fqcn, Target target);
+
+
 	public boolean isEnabled(String token) {	
 		String value;
 		boolean result = false;
-		if (configuration.getSettings().get(token) != null) {
-			value = configuration.getSettings().get(token);
-			result = value.equalsIgnoreCase("true") ? true : false;
+		try {
+			if (LogManager.settings.get(token) != null) {
+				value = LogManager.settings.get(token);
+				result = value.equalsIgnoreCase("true") ? true : false;
+			}
 		}
-		return result;
-	}
+		catch (NullPointerException e) {
+			System.out.print("Settings not set! please check your config: ");
+			e.printStackTrace();		
+		}
+	return result;
+}
 
-	public boolean isLevelEnabled() {
-		return isEnabled("LEVEL");
-	}
+public boolean isLevelEnabled() {
+	return isEnabled("LEVEL");
+}
 
-	public boolean isDateEnabled() {
-		return isEnabled("DATE");
-	}
+public boolean isDateEnabled() {
+	return isEnabled("DATE");
+}
 
-	public boolean isClassNameEnabled() {
-		return isEnabled("CLASS");
-	}
-	
+public boolean isClassNameEnabled() {
+	return isEnabled("FQCN");
+}
+
 }

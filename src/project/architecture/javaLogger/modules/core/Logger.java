@@ -20,6 +20,6 @@ public interface Logger {
 	boolean isDebugEnabled();
 	void debug(String message);
 
-	String getName();
-	void setName(String name);
+	String getFQCN();
+	void setFQCN(String fqcn);
 }

@@ -9,7 +9,7 @@ import project.architecture.javaLogger.modules.core.Level;
 public class DataBaseHandler extends AbstractHandler {
 
 	@Override
-	public void log(Level level, String message, String loggerName, Target target) {
+	public void log(Level level, String message, String fqcn, Target target) {
 		if(target.equals(Target.DB)) {
 			
 		}

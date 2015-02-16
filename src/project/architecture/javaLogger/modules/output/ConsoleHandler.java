@@ -20,15 +20,16 @@ public class ConsoleHandler extends AbstractHandler {
 			long now = date.getTime();
 			SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
 
-			if (isLevelEnabled()) {
-				log.put("level", level.getName());
-			}
 			if(isDateEnabled()) {
 				log.put("date", formater.format(now));
 			}
 
 			if(isClassNameEnabled()) {
 				log.put("class", loggerName);
+			}
+			
+			if (isLevelEnabled()) {
+				log.put("level", level.getName());
 			}
 
 			log.put("message", message);
