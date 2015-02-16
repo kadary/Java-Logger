@@ -6,27 +6,26 @@ import java.util.Map;
 import project.architecture.javaLogger.modules.config.ConfigFromProperties;
 import project.architecture.javaLogger.modules.config.Configurator;
 
-
 /**
+ * Principal class of Logger. it's must be imported in project by customer
  * @author kadary
- *
+ * @version 1.0
  */
 public class LogManager {
 	
-	public static final Map<String,String> settings;
 	private Map<String, Logger> loggers = new HashMap<String, Logger>();
 	private String fqcn;
-	private static final Configurator configuration = new ConfigFromProperties();
-	
-	static {
-		configuration.setConfig();
-		settings = configuration.getSettings();
-	}
-	
+	public static final Configurator config = new ConfigFromProperties();
+
 	public LogManager() {
 		fqcn = Thread. currentThread().getStackTrace()[2].getClassName();
 	}
 	
+	/**
+	 * Return string log
+	 * @param name [Fully-Qualified Class Name]
+	 * @return Full log : Date+Time FQCN Level Log message
+	 */
 	public Logger getLogger(String name) {
 		if (name != null && name != "") {
 			this.fqcn = name;

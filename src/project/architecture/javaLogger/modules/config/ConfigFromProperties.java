@@ -3,8 +3,7 @@ package project.architecture.javaLogger.modules.config;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Enumeration;
 import java.util.Properties;
 
 /**
@@ -13,42 +12,46 @@ import java.util.Properties;
  * @version 1.0
  */
 public class ConfigFromProperties extends AbstractConfigurator {
-	
-	private Properties configProp = new Properties();
-	Map<String,String> config = new HashMap<String,String>();
-	
+
+	public final static Properties config = new Properties();
+
 
 	/**
-	 * Return the content of Properties file within a Map collection
+	 * Return the content of Properties file
 	 * @param NONE
-	 * @return MAP config
+	 * @return Properties config
 	 */
-	@Override
-	public void setConfig() {
+
+	public ConfigFromProperties() {
 		
 		setConfigFilePath("JavaLogger.properties");
-		
+
 		FileInputStream configFileStream;
+	
 		try {
 			configFileStream = new FileInputStream(getConfigFilePath());
 			try {
-				  configProp.load(configFileStream);
-				  if(!configProp.isEmpty()) {
-					  for(String key : configProp.stringPropertyNames()) {
-						  String value = configProp.getProperty(key);
-						  //System.out.println(key + " => " + value);
-						  config.put(key, value);
-						}
-				  }
-				  configFileStream.close();
-				} 
+				config.load(configFileStream);
+				//	System.out.println(config.toString());
+				configFileStream.close();
+			} 
 			catch (IOException e) {
-					e.printStackTrace();
-				}
+				System.out.print("Unable to read property File: ");
+				e.printStackTrace();
+			}
 		} catch (FileNotFoundException e1) {
+			System.out.print("Unable to get property File: ");
 			e1.printStackTrace();
 		}
-		settings = config;
 	}
+	
+	public Properties getSettings(){
+		return config;
+	}
+	
+	public Enumeration<?> getKeys() {
+		return config.propertyNames();
+	}
+
 
 }

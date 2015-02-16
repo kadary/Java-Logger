@@ -6,8 +6,9 @@ package project.architecture.javaLogger.modules.output;
 import project.architecture.javaLogger.modules.core.Level;
 
 /**
+ * Choose of information stored
  * @author kadary
- *
+ * @verion 1.0
  */
 public interface Handler {
 	
@@ -15,6 +16,6 @@ public interface Handler {
 	
 	boolean isLevelEnabled();
 	boolean isDateEnabled();
-	boolean isClassNameEnabled();
+	boolean isFQCNEnabled();
 
 }

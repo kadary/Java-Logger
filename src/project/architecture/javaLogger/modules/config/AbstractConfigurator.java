@@ -1,6 +1,7 @@
 package project.architecture.javaLogger.modules.config;
 
-import java.util.Map;
+import java.util.Enumeration;
+import java.util.Properties;
 
 
 /**
@@ -11,9 +12,6 @@ import java.util.Map;
 public abstract class AbstractConfigurator implements Configurator {
 	
 	private static String path;
-	public static Map<String, String> settings = null;
-
-	public abstract void setConfig();
 
 	/**
 	 * Return the local path of configuration file
@@ -35,8 +33,8 @@ public abstract class AbstractConfigurator implements Configurator {
 		AbstractConfigurator.path = path;
 	}
 	
-	public Map<String, String> getSettings(){
-		return settings;
-	}
+	public abstract Properties getSettings();
+	
+	public abstract Enumeration<?> getKeys();
 
 }

@@ -12,7 +12,7 @@ import project.architecture.javaLogger.modules.core.Level;
  */
 public class ConsoleHandler extends AbstractHandler {
 	@Override
-	public void log(Level level, String message, String loggerName, Target target){
+	public void log(Level level, String message, String fqcn, Target target){
 		Map<String, String> log = new HashMap<String, String>();
 		
 		if(target.equals(Target.CONSOLE)) {
@@ -21,32 +21,29 @@ public class ConsoleHandler extends AbstractHandler {
 			SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
 
 			if(isDateEnabled()) {
-				log.put("date", formater.format(now));
+				log.put("DATE", formater.format(now));
 			}
 
-			if(isClassNameEnabled()) {
-				log.put("class", loggerName);
+			if(isFQCNEnabled()) {
+				log.put("FQCN", fqcn);
 			}
 			
 			if (isLevelEnabled()) {
-				log.put("level", level.getName());
+				log.put("LEVEL", level.getName());
 			}
 
 			log.put("message", message);
 			
-			//Correction de l'affichage null en cas de parametre date/level/class desactives dans properties
-			if(log.get("date") != null)
-				System.out.printf("%-5s %1s", log.get("date"), "|");
-			if(log.get("class") != null)
-				System.out.printf(" %-52s %5s",log.get("class"), "|");
+			if(log.get("DATE") != null)
+				System.out.printf("%-5s %1s", log.get("DATE"), "|");
 			
-			if(log.get("level") != null)
-				System.out.printf(" %-5s %1s", log.get("level"), "|");
+			if(log.get("FQCN") != null)
+				System.out.printf(" %-52s %5s", log.get("FQCN"), "|");
 			
-			System.out.printf(" %-6s%n", log.get("message"), "|");
+			if(log.get("LEVEL") != null)
+				System.out.printf(" %-5s %1s", log.get("LEVEL"), "|");
 			
-			//System.out.printf("%-5s %1s %-52s %5s %-5s %1s %-6s%n", log.get("date"), "|", log.get("class"), "|", log.get("level"), "|", log.get("message"));
-			//System.out.printf(finalMessage);
+			System.out.printf(" %-6s%n", log.get("message"));
 		}
 
 	}
