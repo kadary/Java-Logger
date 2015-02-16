@@ -1,5 +1,4 @@
 package project.architecture.javaLogger.modules.output;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -31,7 +30,6 @@ public class ConsoleHandler extends AbstractHandler {
 			if(isClassNameEnabled()) {
 				log.put("class", loggerName);
 			}
-
 
 			log.put("message", message);
 			

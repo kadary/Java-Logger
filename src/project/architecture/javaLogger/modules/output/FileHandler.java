@@ -12,6 +12,7 @@ import project.architecture.javaLogger.modules.core.Level;
  * @author kadary
  *
  */
+
 public class FileHandler extends AbstractHandler {
 
 	@Override
@@ -41,16 +42,19 @@ public class FileHandler extends AbstractHandler {
 			
 			log.put("message", message);
 			indent = indent + message;
-			//System.out.printf("%-5s %1s %-52s %5s %-5s %1s %-6s%n", log.get("date"), "|", log.get("class"), "|", log.get("level"), "|", log.get("message"));
+			
+			//recuperation dans properties du chemin pour le fichier ou ecrire
+			String filename = ""; // parser le fichier properties
+			
+			//Partie parsing manquante
 			
 			File f = new File ("log.txt");
-			 
+			//File f = new File (filename);
+			
 			try
 			{
 			    FileWriter fw = new FileWriter (f,true);
-			    
 			    fw.write(indent+"\n");
-			 
 			    fw.close();
 			}
 			catch (IOException exception)
