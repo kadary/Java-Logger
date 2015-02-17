@@ -1,5 +1,7 @@
 package project.architecture.javaLogger.modules.core;
 
+import project.architecture.javaLogger.modules.output.Handler;
+
 
 
 /**
@@ -28,8 +30,10 @@ public interface Logger {
 	// ERROR
 	boolean isErrorEnabled();
 	void error(String message);
-
-	// Custom path (FQCN)
-	String getFQCN();
-	void setFQCN(String fqcn);
+	
+	void setHandlers(Handler handler);
+	
+	void setLevel(Level level);
+	
+	void setLayout();
 }

@@ -12,10 +12,7 @@ import project.architecture.javaLogger.modules.core.Level;
  */
 public interface Handler {
 	
-	void log(Level level, String message, String fqcn, Target target);
-	
-	boolean isLevelEnabled();
-	boolean isDateEnabled();
-	boolean isFQCNEnabled();
+	void log(Level level, String message, String fqcn, String handler);
+	void log(Level level, String message, String fqcn, String handler, Level levelFixed);
 
 }

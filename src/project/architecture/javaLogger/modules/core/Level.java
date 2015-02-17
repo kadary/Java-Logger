@@ -30,7 +30,4 @@ public class Level extends AbstractLevel {
 	public static final Level ERROR = new Level("ERROR", 100);
 	
 	public static final Level OFF = new Level("OFF", Integer.MIN_VALUE);
-	
-	
-
 }

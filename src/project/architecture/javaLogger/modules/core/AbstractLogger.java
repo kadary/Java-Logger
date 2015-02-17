@@ -1,45 +1,51 @@
 package project.architecture.javaLogger.modules.core;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import project.architecture.javaLogger.modules.config.Key;
 import project.architecture.javaLogger.modules.output.ConsoleHandler;
 import project.architecture.javaLogger.modules.output.DataBaseHandler;
 import project.architecture.javaLogger.modules.output.FileHandler;
 import project.architecture.javaLogger.modules.output.Handler;
-import project.architecture.javaLogger.modules.output.Target;
 
 
 /**
  * @author kadary
  * @version 1.0
+ * @param <V>
  */
 public class AbstractLogger implements Logger {
-	
-	private String fqcn;
-	private Handler console = new ConsoleHandler();
-	private Handler file = new FileHandler();
-	private Handler db = new DataBaseHandler();
-	private Properties settings = LogManager.config.getSettings();
-    
-    public AbstractLogger(String name) {
-        this.setFQCN(name);
-    }
 
-	public String getFQCN() {
+	private String fqcn;
+	private Handler CONSOLE = new ConsoleHandler();
+	private Handler FILE = new FileHandler();
+	private Handler DB = new DataBaseHandler();
+	protected Map<String, Handler> handlers = new HashMap<String, Handler>();
+	protected Level levelFixed ;
+	private Properties settings = LogManager.config.getSettings();
+
+	public AbstractLogger(String name) {
+		this.setFQCN(name);
+	}
+
+	private String getFQCN() {
 		return fqcn;
 	}
 
-	public void setFQCN(String fqcn) {
+	private void setFQCN(String fqcn) {
 		this.fqcn = fqcn;
 	}
 
-	public boolean isEnabled(String level) {	
+	public boolean isEnabled(String levelFixed) {	
 		String value;
 		boolean result = false;
 		try {
-			if (settings.get(level) != null) {
-				value = (String) settings.get(level);
+			if (settings.get(levelFixed) != null) {
+				value = (String) settings.get(levelFixed);
 				result = value.equalsIgnoreCase("true") ? true : false;
 			}
 		}
@@ -55,16 +61,12 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void info(String message) {
-		if (isEnabled(Key.ConsoleHandler.name())) {
-			console.log(Level.INFO, message, this.getFQCN(), Target.CONSOLE);
+		if (!handlers.isEmpty() || !isNull(levelFixed)) {
+			this.logByLoggerConfig(message, Level.INFO);
 		}
-		
-		if (isEnabled(Key.FileHandler.name())) {
-			file.log(Level.INFO, message, this.getFQCN(), Target.FILE);
-		}
-		
-		if (isEnabled(Key.DataBaseHandler.name())) {
-			db.log(Level.INFO, message, this.getFQCN(), Target.DB);
+
+		else {
+			this.logByPropConfig(message, Level.INFO);
 		}
 	}
 
@@ -73,16 +75,11 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void warn(String message) {
-		if (isEnabled(Key.ConsoleHandler.name())) {
-			console.log(Level.WARN, message, this.getFQCN(), Target.CONSOLE);
+		if (!handlers.isEmpty() || !isNull(levelFixed)) {
+			this.logByLoggerConfig(message, Level.WARN);
 		}
-		
-		if (isEnabled(Key.FileHandler.name())) {
-			file.log(Level.WARN, message, this.getFQCN(), Target.FILE);
-		}
-		
-		if (isEnabled(Key.DataBaseHandler.name())) {
-			db.log(Level.WARN, message, this.getFQCN(), Target.DB);
+		else {
+			this.logByPropConfig(message, Level.WARN);
 		}
 	}
 
@@ -91,16 +88,11 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void error(String message) {
-		if (isEnabled(Key.ConsoleHandler.name())) {
-			console.log(Level.ERROR, message, this.getFQCN(), Target.CONSOLE);
+		if (!handlers.isEmpty() || !isNull(levelFixed)) {
+			this.logByLoggerConfig(message, Level.ERROR);
 		}
-		
-		if (isEnabled(Key.FileHandler.name())) {
-			file.log(Level.ERROR, message, this.getFQCN(), Target.FILE);
-		}
-		
-		if (isEnabled(Key.DataBaseHandler.name())) {
-			db.log(Level.ERROR, message, this.getFQCN(), Target.DB);
+		else {
+			this.logByPropConfig(message, Level.ERROR);
 		}
 	}
 
@@ -109,16 +101,12 @@ public class AbstractLogger implements Logger {
 	}
 
 	public void debug(String message) {
-		if (isEnabled(Key.ConsoleHandler.name())) {
-			console.log(Level.DEBUG, message, this.getFQCN(), Target.CONSOLE);
+		if (!handlers.isEmpty() || !isNull(levelFixed)) {
+			this.logByLoggerConfig(message, Level.DEBUG);
 		}
-		
-		if (isEnabled(Key.FileHandler.name())) {
-			file.log(Level.DEBUG, message, this.getFQCN(), Target.FILE);
-		}
-		
-		if (isEnabled(Key.DataBaseHandler.name())) {
-			db.log(Level.DEBUG, message, this.getFQCN(), Target.DB);
+
+		else {
+			this.logByPropConfig(message, Level.DEBUG);
 		}
 	}
 
@@ -129,17 +117,77 @@ public class AbstractLogger implements Logger {
 
 	@Override
 	public void trace(String message) {
-		if (isEnabled(Key.ConsoleHandler.name())) {
-			console.log(Level.TRACE, message, this.getFQCN(), Target.CONSOLE);
+		if (!handlers.isEmpty() || !isNull(levelFixed)) {
+			this.logByLoggerConfig(message, Level.TRACE);
 		}
-		
-		if (isEnabled(Key.FileHandler.name())) {
-			file.log(Level.TRACE, message, this.getFQCN(), Target.FILE);
+
+		else {
+			this.logByPropConfig(message, Level.TRACE);
+		}		
+	}
+
+	@Override
+	public void setHandlers(Handler handler) {
+		handlers.put(handler.getClass().getName(), handler);
+	}
+
+	@Override
+	public void setLevel(Level levelFixed) {
+		this.levelFixed = levelFixed;
+	}
+
+	@Override
+	public void setLayout() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void logByLoggerConfig(String message, Level level) {
+		if (!handlers.isEmpty()) {
+			Set<String> keys = handlers.keySet();
+			Iterator<String> iterator = keys.iterator();
+			while(iterator.hasNext()) {
+				String key = iterator.next();
+				Handler handler = handlers.get(key);
+				if(!isNull(levelFixed)) {
+					handler.log(level, message, this.getFQCN(), handler.getClass().getName(), levelFixed);
+				}
+				else
+					handler.log(level, message, this.getFQCN(), handler.getClass().getName());
+			}
 		}
-		
-		if (isEnabled(Key.DataBaseHandler.name())) {
-			db.log(Level.TRACE, message, this.getFQCN(), Target.DB);
+		else if(!isNull(levelFixed)) {
+			if (isEnabled(Key.ConsoleHandler.name())) {
+				CONSOLE.log(level, message, this.getFQCN(), ConsoleHandler.class.getName(), levelFixed);
+			}
+
+			if (isEnabled(Key.FileHandler.name())) {
+				FILE.log(level, message, this.getFQCN(), FileHandler.class.getName(), levelFixed);
+			}
+
+			if (isEnabled(Key.DataBaseHandler.name())) {
+				DB.log(level, message, this.getFQCN(), DataBaseHandler.class.getName(), levelFixed);
+			}
 		}
-		
+	}
+
+	private void logByPropConfig(String message, Level level) {
+		if (handlers.isEmpty() & isNull(levelFixed)) {
+			if (isEnabled(Key.ConsoleHandler.name())) {
+				CONSOLE.log(level, message, this.getFQCN(), ConsoleHandler.class.getName());
+			}
+
+			if (isEnabled(Key.FileHandler.name())) {
+				FILE.log(level, message, this.getFQCN(), FileHandler.class.getName());
+			}
+
+			if (isEnabled(Key.DataBaseHandler.name())) {
+				DB.log(level, message, this.getFQCN(), DataBaseHandler.class.getName());
+			}
+		}
+	}
+
+	private boolean isNull(Level levelFixed) {
+		return this.levelFixed == null || this.levelFixed.getName() == " " ? true : false;
 	}
 }
