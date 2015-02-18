@@ -18,7 +18,7 @@ import project.architecture.javaLogger.modules.output.Handler;
  * @version 1.0
  * @param <V>
  */
-public class AbstractLogger implements Logger {
+public abstract class AbstractLogger implements Logger {
 
 	private String fqcn;
 	private Handler CONSOLE = new ConsoleHandler();
@@ -31,6 +31,13 @@ public class AbstractLogger implements Logger {
 	public AbstractLogger(String name) {
 		this.setFQCN(name);
 	}
+	
+	public abstract void trace(String message);
+	public abstract void debug(String message);
+	public abstract void info(String message);
+	public abstract void warn(String message);
+	public abstract void error(String message);
+
 
 	private String getFQCN() {
 		return fqcn;
@@ -60,70 +67,21 @@ public class AbstractLogger implements Logger {
 		return isEnabled(Key.LevelINFO.name());
 	}
 
-	public void info(String message) {
-		if (!handlers.isEmpty() || !isNull(levelFixed)) {
-			this.logByLoggerConfig(message, Level.INFO);
-		}
-
-		else {
-			this.logByPropConfig(message, Level.INFO);
-		}
-	}
-
 	public boolean isWarnEnabled() {
 		return isEnabled(Key.LevelWARN.name());
-	}
-
-	public void warn(String message) {
-		if (!handlers.isEmpty() || !isNull(levelFixed)) {
-			this.logByLoggerConfig(message, Level.WARN);
-		}
-		else {
-			this.logByPropConfig(message, Level.WARN);
-		}
 	}
 
 	public boolean isErrorEnabled() {
 		return isEnabled(Key.LevelERROR.name());
 	}
 
-	public void error(String message) {
-		if (!handlers.isEmpty() || !isNull(levelFixed)) {
-			this.logByLoggerConfig(message, Level.ERROR);
-		}
-		else {
-			this.logByPropConfig(message, Level.ERROR);
-		}
-	}
-
 	public boolean isDebugEnabled() {
 		return isEnabled(Key.LevelDEBUG.name());
-	}
-
-	public void debug(String message) {
-		if (!handlers.isEmpty() || !isNull(levelFixed)) {
-			this.logByLoggerConfig(message, Level.DEBUG);
-		}
-
-		else {
-			this.logByPropConfig(message, Level.DEBUG);
-		}
 	}
 
 	@Override
 	public boolean isTraceEnabled() {
 		return isEnabled(Key.LevelTrace.name());
-	}
-
-	@Override
-	public void trace(String message) {
-		if (!handlers.isEmpty() || !isNull(levelFixed)) {
-			this.logByLoggerConfig(message, Level.TRACE);
-		}
-
-		else {
-			this.logByPropConfig(message, Level.TRACE);
-		}		
 	}
 
 	@Override
@@ -142,7 +100,7 @@ public class AbstractLogger implements Logger {
 
 	}
 
-	private void logByLoggerConfig(String message, Level level) {
+	protected void logByLoggerConfig(String message, Level level) {
 		if (!handlers.isEmpty()) {
 			Set<String> keys = handlers.keySet();
 			Iterator<String> iterator = keys.iterator();
@@ -187,7 +145,7 @@ public class AbstractLogger implements Logger {
 		}
 	}
 
-	private void logByPropConfig(String message, Level level) {
+	protected void logByPropConfig(String message, Level level) {
 		if (handlers.isEmpty() & isNull(levelFixed)) {
 			if (isEnabled(Key.ConsoleHandler.name())) {
 				CONSOLE.log(level, message, this.getFQCN(), ConsoleHandler.class.getName());
@@ -203,7 +161,7 @@ public class AbstractLogger implements Logger {
 		}
 	}
 
-	private boolean isNull(Level levelFixed) {
+	protected boolean isNull(Level levelFixed) {
 		return this.levelFixed == null || this.levelFixed.getName() == " " ? true : false;
 	}
 }

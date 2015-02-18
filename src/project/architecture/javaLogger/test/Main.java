@@ -23,8 +23,8 @@ public class Main {
 		
 		logger.setHandlers(new ConsoleHandler());
 		//logger.setHandlers(new FileHandler());
-		//logger.setLevel(Level.INFO);
-		logger.setLevel(Level.WARN);
+		logger.setLevel(Level.INFO);
+		//logger.setLevel(Level.WARN);
 		
 		if (logger.isInfoEnabled()) {
 			logger.info("Ceci est un message tres tres long car on veut tester l'indentation du LoggerWriter pour pouvoir reajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. ");

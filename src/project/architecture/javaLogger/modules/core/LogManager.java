@@ -31,7 +31,7 @@ public class LogManager {
 			return loggers.get(fqcn);
 		}
 		else 
-			loggers.put(fqcn, new ExtendedLogger(fqcn));
+			loggers.put(fqcn, new DefaultLogger(fqcn));
 			return loggers.get(fqcn);
 	}
 	
@@ -43,7 +43,7 @@ public class LogManager {
 			return loggers.get(fqcn);
 		}
 		else 
-			loggers.put(fqcn, new ExtendedLogger(fqcn));
+			loggers.put(fqcn, new DefaultLogger(fqcn));
 			return loggers.get(fqcn);
 	}
 	
