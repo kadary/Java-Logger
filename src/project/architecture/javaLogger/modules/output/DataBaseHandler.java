@@ -25,4 +25,11 @@ public class DataBaseHandler extends AbstractHandler {
 		
 	}
 
+	@Override
+	public void log(Level level, String message, String fqcn, String handler,
+			boolean forceLogging) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

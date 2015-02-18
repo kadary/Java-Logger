@@ -30,4 +30,14 @@ public class FileHandler extends AbstractHandler {
 			}
 		}
 	}
+	
+	@Override
+	public void log(Level level, String message, String fqcn, String handler,
+			boolean forceLogging) {
+		if (forceLogging) {
+			if(this.getClass().getName().equals(handler)) {
+				printer.write(level, message, fqcn, handler, "FILE");
+			}
+		}	
+	}
 }

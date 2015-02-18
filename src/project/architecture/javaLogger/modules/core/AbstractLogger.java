@@ -150,7 +150,11 @@ public class AbstractLogger implements Logger {
 				String key = iterator.next();
 				Handler handler = handlers.get(key);
 				if(!isNull(levelFixed)) {
-					handler.log(level, message, this.getFQCN(), handler.getClass().getName(), levelFixed);
+					if(levelFixed.getValue() > level.getValue()) {
+						handler.log(level, message, this.getFQCN(), handler.getClass().getName(), true);
+					}
+					else
+						handler.log(level, message, this.getFQCN(), handler.getClass().getName(), levelFixed);
 				}
 				else
 					handler.log(level, message, this.getFQCN(), handler.getClass().getName());
@@ -158,15 +162,27 @@ public class AbstractLogger implements Logger {
 		}
 		else if(!isNull(levelFixed)) {
 			if (isEnabled(Key.ConsoleHandler.name())) {
-				CONSOLE.log(level, message, this.getFQCN(), ConsoleHandler.class.getName(), levelFixed);
+				if(levelFixed.getValue() > level.getValue()) {
+					CONSOLE.log(level, message, this.getFQCN(), ConsoleHandler.class.getName(), true);
+				}
+				else
+					CONSOLE.log(level, message, this.getFQCN(), ConsoleHandler.class.getName(), levelFixed);
 			}
 
 			if (isEnabled(Key.FileHandler.name())) {
-				FILE.log(level, message, this.getFQCN(), FileHandler.class.getName(), levelFixed);
+				if(levelFixed.getValue() > level.getValue()) {
+					FILE.log(level, message, this.getFQCN(), FileHandler.class.getName(), true);
+				}
+				else
+					FILE.log(level, message, this.getFQCN(), FileHandler.class.getName(), levelFixed);
 			}
 
 			if (isEnabled(Key.DataBaseHandler.name())) {
-				DB.log(level, message, this.getFQCN(), DataBaseHandler.class.getName(), levelFixed);
+				if(levelFixed.getValue() > level.getValue()) {
+					DB.log(level, message, this.getFQCN(), DataBaseHandler.class.getName(), true);
+				}
+				else
+					DB.log(level, message, this.getFQCN(), DataBaseHandler.class.getName(), levelFixed);
 			}
 		}
 	}
