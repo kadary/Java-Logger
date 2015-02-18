@@ -12,8 +12,8 @@ import project.architecture.javaLogger.modules.core.Level;
  */
 public interface Handler {
 	
-	void log(Level level, String message, String fqcn, String handler);
-	void log(Level level, String message, String fqcn, String handler, Level levelFixed);
-	void log(Level level, String message, String fqcn, String name, boolean forceLogging);
+	void log(Level level, String message, String fqcn, String handler, Formater formater);
+	void log(Level level, String message, String fqcn, String handler, Formater formater, Level levelFixed);
+	void log(Level level, String message, String fqcn, String name, Formater formater, boolean forceLogging);
 
 }

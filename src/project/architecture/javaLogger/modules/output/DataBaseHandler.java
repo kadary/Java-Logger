@@ -10,7 +10,7 @@ import project.architecture.javaLogger.modules.core.Level;
 public class DataBaseHandler extends AbstractHandler {
 
 	@Override
-	public void log(Level level, String message, String fqcn, String handler) {
+	public void log(Level level, String message, String fqcn, String handler, Formater formater) {
 		if(this.getClass().getName().equals(handler)) {
 			
 			// mhgeay : je peux tenter l'insert sur une base MySQl ou SQLite
@@ -19,14 +19,14 @@ public class DataBaseHandler extends AbstractHandler {
 	}
 
 	@Override
-	public void log(Level level, String message, String fqcn, String handler,
+	public void log(Level level, String message, String fqcn, String handler, Formater formater,
 			Level levelFixed) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void log(Level level, String message, String fqcn, String handler,
+	public void log(Level level, String message, String fqcn, String handler, Formater formater,
 			boolean forceLogging) {
 		// TODO Auto-generated method stub
 		

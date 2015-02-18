@@ -1,5 +1,6 @@
 package project.architecture.javaLogger.modules.core;
 
+import project.architecture.javaLogger.modules.output.Formater;
 import project.architecture.javaLogger.modules.output.Handler;
 
 
@@ -35,5 +36,5 @@ public interface Logger {
 	
 	void setLevel(Level level);
 	
-	void setLayout();
+	void setLayout(Formater formater);
 }
