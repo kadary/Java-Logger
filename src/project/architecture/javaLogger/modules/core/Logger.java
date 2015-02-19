@@ -32,9 +32,9 @@ public interface Logger {
 	boolean isErrorEnabled();
 	void error(String message);
 	
-	void setHandlers(Handler handler);
+	void addHandler(Handler handler);
 	
 	void setLevel(Level level);
 	
-	void setLayout(Formater formater);
+	void setFormater(Formater formater);
 }

@@ -11,7 +11,7 @@ public class ConsoleHandler extends AbstractHandler {
 	@Override
 	public void log(Level level, String message, String fqcn, String handler, Formater formater){		
 		if(this.getClass().getName().equals(handler)) {
-			printer.write(level, message, fqcn, ConsoleHandler.class.getName(), formater);
+			printer.write(level, message, fqcn, ConsoleHandler.class.getName(), formater, null);
 		}
 
 	}
@@ -21,7 +21,7 @@ public class ConsoleHandler extends AbstractHandler {
 			Level levelFixed) {
 		if (level.equals(levelFixed)) {
 			if(this.getClass().getName().equals(handler)) {
-				printer.write(levelFixed, message, fqcn, ConsoleHandler.class.getName(), formater);
+				printer.write(levelFixed, message, fqcn, ConsoleHandler.class.getName(), formater, null);
 			}
 		}
 
@@ -32,7 +32,7 @@ public class ConsoleHandler extends AbstractHandler {
 			boolean forceLogging) {
 		if (forceLogging) {
 			if(this.getClass().getName().equals(handler)) {
-				printer.write(level, message, fqcn, ConsoleHandler.class.getName(), formater);
+				printer.write(level, message, fqcn, ConsoleHandler.class.getName(), formater, null);
 			}
 		}	
 	}

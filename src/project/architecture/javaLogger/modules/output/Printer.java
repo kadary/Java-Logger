@@ -20,70 +20,7 @@ import project.architecture.javaLogger.modules.core.LogManager;
  *
  */
 public class Printer {
-
-	public void write(Level level, String message, String fqcn, String handler, Formater formater) {
-
-		Map<String, String> log = new HashMap<String, String>();
-
-		log = this.initMap(log, level, fqcn, message, formater);		
-
-		if (handler.equals(ConsoleHandler.class.getName())) {
-			if(log.get("DATE") != null)
-				System.out.printf("%-5s %1s", log.get("DATE"), formater.getSeparator());
-
-			if(log.get("FQCN") != null)
-				System.out.printf(" %-52s %5s", log.get("FQCN"), formater.getSeparator());
-
-			if(log.get("LEVEL") != null)
-				System.out.printf(" %-5s %1s", log.get("LEVEL"), formater.getSeparator());
-			
-			if(log.get("MESSAGE") != null)
-				System.out.printf(" %-6s%n", log.get("MESSAGE"));
-		}
-
-		else if (handler.equals(FileHandler.class.getName())) {
-			FileWriter fw = null;			
-			String filename = (String) LogManager.config.getSettings().get(Key.LogFilePath.name());
-
-			final File logFile = new File (filename);
-			final File parent_directory = logFile.getParentFile();
-
-			try {
-
-				if (null != parent_directory) {
-					parent_directory.mkdirs();
-				}
-
-				fw = new FileWriter (logFile, true);
-				String fileSize = (String) LogManager.config.getSettings().get(Key.LogFileSize.name());
-				double limitSize = 0.0;
-				try {
-					limitSize = Double.parseDouble(fileSize.trim());
-					limitSize *= 1000; 
-				}
-				catch (NumberFormatException e) {
-					System.out.print("Your log file size is not readable, please check it => ");
-					e.printStackTrace();
-				}
-
-				this.writeInFile(fw, log, logFile, limitSize, formater);
-			}
-			catch (IOException exception) {
-				System.out.print("Unable to write in file => ");
-				exception.printStackTrace();
-			}
-
-			finally {
-				try {
-					fw.close();
-				} catch (IOException e) {
-					System.out.println ("Unable to close File => ");
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
+	
 	private void writeInFile(FileWriter fw, Map<String, String> log, File logFile, double limitSize, Formater formater) throws IOException {
 
 		if (limitSize ==  0 || logFile.length() <= limitSize) {
@@ -114,6 +51,77 @@ public class Printer {
 
 	}
 
+	public void write(Level level, String message, String fqcn, String handler, Formater formater, String logFilePath) {
+
+		Map<String, String> log = new HashMap<String, String>();
+
+		log = this.initMap(log, level, fqcn, message, formater);		
+
+		if (handler.equals(ConsoleHandler.class.getName())) {
+			if(log.get("DATE") != null)
+				System.out.printf("%-5s %1s", log.get("DATE"), formater.getSeparator());
+
+			if(log.get("FQCN") != null)
+				System.out.printf(" %-52s %5s", log.get("FQCN"), formater.getSeparator());
+
+			if(log.get("LEVEL") != null)
+				System.out.printf(" %-5s %1s", log.get("LEVEL"), formater.getSeparator());
+			
+			if(log.get("MESSAGE") != null)
+				System.out.printf(" %-6s%n", log.get("MESSAGE"));
+		}
+
+		else if (handler.equals(FileHandler.class.getName())) {
+			this.writeToFile(level, message, fqcn, FileHandler.class.getName(), formater, logFilePath);
+		}
+	}
+
+	private void writeToFile(Level level, String message, String fqcn, String name,
+			Formater formater, String logFilePath) {
+		
+		Map<String, String> log = new HashMap<String, String>();
+
+		log = this.initMap(log, level, fqcn, message, formater);	
+		
+		FileWriter fw = null;			
+		final File logFile = new File (logFilePath);
+		final File parent_directory = logFile.getParentFile();
+
+		try {
+
+			if (null != parent_directory) {
+				parent_directory.mkdirs();
+			}
+
+			fw = new FileWriter (logFile, true);
+			String fileSize = (String) LogManager.config.getSettings().get(Key.LogFileSize.name());
+			double limitSize = 0.0;
+			try {
+				limitSize = Double.parseDouble(fileSize.trim());
+				limitSize *= 1000; 
+			}
+			catch (NumberFormatException e) {
+				System.out.print("Your log file size is not readable, please check it => ");
+				e.printStackTrace();
+			}
+
+			this.writeInFile(fw, log, logFile, limitSize, formater);
+		}
+		catch (IOException exception) {
+			System.out.print("Unable to write in file => ");
+			exception.printStackTrace();
+		}
+
+		finally {
+			try {
+				fw.close();
+			} catch (IOException e) {
+				System.out.println ("Unable to close File => ");
+				e.printStackTrace();
+			}
+		}	
+	}
+	
 	private Map<String, String> initMap(Map<String, String> log, Level level, String fqcn, String message, 
 			Formater formater) {
 		Date date = new Date();
@@ -137,6 +145,5 @@ public class Printer {
 		}
 
 		return log;
-
 	}
 }

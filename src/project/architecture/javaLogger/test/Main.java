@@ -21,9 +21,10 @@ public class Main {
 		Logger loggerClassCustom = logManager.getLogger(Map.class);
 		Logger loggerClassA = logManager.getLogger("com.esiea.classA");
 		
-		logger.setHandlers(new ConsoleHandler());
-		logger.setHandlers(new FileHandler());
-		//logger.setLayout(new TestFormater());
+		logger.addHandler(new ConsoleHandler());
+		//logger.addHandler(new FileHandler());
+		//logger.addHandler(new FileHandler("C:/Users/kadary/Desktop/log.log"));
+		logger.setFormater(new TestFormater());
 		//logger.setLevel(Level.INFO);
 		logger.setLevel(Level.WARN);
 		

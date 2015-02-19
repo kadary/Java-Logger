@@ -87,7 +87,7 @@ public abstract class AbstractLogger implements Logger {
 	}
 
 	@Override
-	public void setHandlers(Handler handler) {
+	public void addHandler(Handler handler) {
 		handlers.put(handler.getClass().getName(), handler);
 	}
 
@@ -97,7 +97,7 @@ public abstract class AbstractLogger implements Logger {
 	}
 
 	@Override
-	public void setLayout(Formater formater) {
+	public void setFormater(Formater formater) {
 		this.formater = formater;
 	}
 

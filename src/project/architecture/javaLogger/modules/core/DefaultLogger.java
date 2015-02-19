@@ -12,7 +12,7 @@ public class DefaultLogger extends AbstractLogger {
 
 	public DefaultLogger(String name) {
 		super(name);
-		setLayout(new DefaultFormater());
+		setFormater(new DefaultFormater());
 	}
 	
 	@Override
