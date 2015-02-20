@@ -1,9 +1,10 @@
 /**
  * 
  */
-package project.architecture.javaLogger.modules.output;
+package project.architecture.javaLogger.modules.output.handler;
 
-import project.architecture.javaLogger.modules.core.Level;
+import project.architecture.javaLogger.core.Level;
+import project.architecture.javaLogger.modules.output.formater.Formater;
 
 /**
  * Choose of information stored

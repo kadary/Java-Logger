@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.modules.core;
+package project.architecture.javaLogger.core;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,11 +7,11 @@ import java.util.Properties;
 import java.util.Set;
 
 import project.architecture.javaLogger.modules.config.Key;
-import project.architecture.javaLogger.modules.output.ConsoleHandler;
-import project.architecture.javaLogger.modules.output.DataBaseHandler;
-import project.architecture.javaLogger.modules.output.FileHandler;
-import project.architecture.javaLogger.modules.output.Formater;
-import project.architecture.javaLogger.modules.output.Handler;
+import project.architecture.javaLogger.modules.output.formater.Formater;
+import project.architecture.javaLogger.modules.output.handler.ConsoleHandler;
+import project.architecture.javaLogger.modules.output.handler.DataBaseHandler;
+import project.architecture.javaLogger.modules.output.handler.FileHandler;
+import project.architecture.javaLogger.modules.output.handler.Handler;
 
 
 /**

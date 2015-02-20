@@ -1,7 +1,7 @@
-package project.architecture.javaLogger.modules.core;
+package project.architecture.javaLogger.core;
 
-import project.architecture.javaLogger.modules.output.Formater;
-import project.architecture.javaLogger.modules.output.Handler;
+import project.architecture.javaLogger.modules.output.formater.Formater;
+import project.architecture.javaLogger.modules.output.handler.Handler;
 
 
 

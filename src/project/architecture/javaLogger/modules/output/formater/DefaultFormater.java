@@ -1,12 +1,12 @@
 /**
  * 
  */
-package project.architecture.javaLogger.modules.output;
+package project.architecture.javaLogger.modules.output.formater;
 
 import java.util.Properties;
 
+import project.architecture.javaLogger.core.LogManager;
 import project.architecture.javaLogger.modules.config.Key;
-import project.architecture.javaLogger.modules.core.LogManager;
 
 /**
  * @author kadary

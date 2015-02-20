@@ -2,11 +2,11 @@ package project.architecture.javaLogger.test;
 
 import java.util.Map;
 
-import project.architecture.javaLogger.modules.core.Level;
-import project.architecture.javaLogger.modules.core.LogManager;
-import project.architecture.javaLogger.modules.core.Logger;
-import project.architecture.javaLogger.modules.output.ConsoleHandler;
-import project.architecture.javaLogger.modules.output.FileHandler;
+import project.architecture.javaLogger.core.Level;
+import project.architecture.javaLogger.core.LogManager;
+import project.architecture.javaLogger.core.Logger;
+import project.architecture.javaLogger.modules.output.handler.ConsoleHandler;
+import project.architecture.javaLogger.modules.output.handler.FileHandler;
 
 /**
  * TEST class main : Class for developers. They can try their latest codes

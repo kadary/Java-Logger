@@ -1,6 +1,6 @@
 package project.architecture.javaLogger.test;
 
-import project.architecture.javaLogger.modules.output.AbstractFormater;
+import project.architecture.javaLogger.modules.output.formater.AbstractFormater;
 
 public class TestFormater extends AbstractFormater {
 	

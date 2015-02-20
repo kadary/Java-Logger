@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.modules.core;
+package project.architecture.javaLogger.core;
 
 /**
  * @author kadary

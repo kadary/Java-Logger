@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.modules.core;
+package project.architecture.javaLogger.core;
 
 /**
  * Herited class with our 6 log levels : TRACE > ERROR > DEBUG > WARM > INFO > OFF

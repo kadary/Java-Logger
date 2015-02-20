@@ -1,8 +1,9 @@
-package project.architecture.javaLogger.modules.output;
+package project.architecture.javaLogger.modules.output.handler;
 
+import project.architecture.javaLogger.core.Level;
+import project.architecture.javaLogger.core.LogManager;
 import project.architecture.javaLogger.modules.config.Key;
-import project.architecture.javaLogger.modules.core.Level;
-import project.architecture.javaLogger.modules.core.LogManager;
+import project.architecture.javaLogger.modules.output.formater.Formater;
 
 /**
  * @author kadary

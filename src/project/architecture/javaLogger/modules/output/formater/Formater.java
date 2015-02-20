@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.modules.output;
+package project.architecture.javaLogger.modules.output.formater;
 
 import java.util.List;
 

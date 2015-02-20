@@ -1,6 +1,6 @@
-package project.architecture.javaLogger.modules.core;
+package project.architecture.javaLogger.core;
 
-import project.architecture.javaLogger.modules.output.DefaultFormater;
+import project.architecture.javaLogger.modules.output.formater.DefaultFormater;
 
 
 /**
