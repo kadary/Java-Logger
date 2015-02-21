@@ -1,6 +1,5 @@
 package project.architecture.javaLogger.core;
 
-import project.architecture.javaLogger.modules.output.formater.DefaultFormater;
 
 
 /**
@@ -12,7 +11,6 @@ public class DefaultLogger extends AbstractLogger {
 
 	public DefaultLogger(String name) {
 		super(name);
-		setFormater(new DefaultFormater());
 	}
 	
 	@Override

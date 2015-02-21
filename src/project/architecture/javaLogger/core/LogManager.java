@@ -3,8 +3,8 @@ package project.architecture.javaLogger.core;
 import java.util.HashMap;
 import java.util.Map;
 
-import project.architecture.javaLogger.modules.config.ConfigFromProperties;
 import project.architecture.javaLogger.modules.config.Configurator;
+import project.architecture.javaLogger.modules.config.DefaultConfigurator;
 
 /**
  * Principal class of Logger. it's must be imported in project by customer
@@ -15,8 +15,8 @@ public class LogManager {
 	
 	public static final Map<String, Logger> loggers = new HashMap<String, Logger>();
 	private String fqcn;
-	public static final Configurator config = new ConfigFromProperties();
-
+	public static final Configurator config = new DefaultConfigurator();
+	
 	/**
 	 * Return string log
 	 * @param <T>
@@ -37,7 +37,7 @@ public class LogManager {
 	
 	public Logger getLogger(String targetClass) {
 		if (targetClass != null & targetClass != "") {
-			this.fqcn = targetClass;
+				this.fqcn = targetClass;
 		}
 		if (loggers.containsKey(fqcn)) {
 			return loggers.get(fqcn);

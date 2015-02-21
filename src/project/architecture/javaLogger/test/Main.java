@@ -17,36 +17,40 @@ public class Main {
 	public static void main(String[] args) {
 
 		LogManager logManager = new LogManager();
-		Logger logger = logManager.getLogger();
+		Logger logger = logManager.getLogger("esiea");
+		Logger logger2 = logManager.getLogger("demkada");
 		Logger loggerClassCustom = logManager.getLogger(Map.class);
 		Logger loggerClassA = logManager.getLogger("com.esiea.classA");
-		
-		logger.addHandler(new ConsoleHandler());
+
+		//logger.addHandler(new ConsoleHandler());
 		//logger.addHandler(new FileHandler());
-		//logger.addHandler(new FileHandler("C:/Users/kadary/Desktop/log.log", 5));
+		logger.addHandler(new FileHandler("D:/logs/log.log", null));
 		//logger.setFormater(new TestFormater());
 		//logger.setLevel(Level.INFO);
-		logger.setLevel(Level.WARN);
-		
+		//logger.setLevel(Level.WARN);
+
 		if (logger.isInfoEnabled()) {
 			logger.info("Ceci est un message tres tres long car on veut tester l'indentation du LoggerWriter pour pouvoir reajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. ");
 		}
-		
+
 		if (logger.isWarnEnabled()) {
 			logger.warn("Test de la librairie");
 		}
-	    /*
+
+		logger2.info("Ceci est un message tres tres long car on veut tester l'indentation du LoggerWriter pour pouvoir reajuster le texte dans la console/le fichier texte. Et blablabla... Et blablabla ! Baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin baratin. ");
+
+		logger2.warn("Test de la librairie");
+		
 		if (loggerClassCustom.isDebugEnabled()) {
 			loggerClassCustom.debug("Salut");
 		}
 		if (loggerClassCustom.isErrorEnabled()) {
 			loggerClassCustom.error("Whaouuuuuuuuuuuuuuuuuuuu");
 		}
-		
+
 		if (loggerClassA.isWarnEnabled()) {
 			loggerClassA.warn("ClassA is not defined");
 		}
-		*/
 	}
 
 }

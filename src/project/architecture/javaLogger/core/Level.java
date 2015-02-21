@@ -1,5 +1,6 @@
 package project.architecture.javaLogger.core;
 
+
 /**
  * Herited class with our 6 log levels : TRACE > ERROR > DEBUG > WARM > INFO > OFF
  * off - Logger disabled
@@ -13,22 +14,44 @@ package project.architecture.javaLogger.core;
  * @version 1.1
  */
 public class Level extends AbstractLevel {
-	
+
 	public Level(String name, int value) {
 		this.setName(name);
 		this.setValue(value);
 	}
-	
+
+	public static Level getLevel(String levelName) {
+		Level level;
+		switch (levelName) {
+		case "INFO":
+			level = Level.INFO;
+			break;
+		case "WARN":
+			level = Level.WARN;
+			break;
+		case "DEBUG":
+			level = Level.DEBUG;
+			break;
+		case "ERROR":
+			level = Level.ERROR;
+			break;
+		default:
+			level = Level.TRACE;
+			break;	
+			}
+		return level;
+	}
+
 	public static final Level OFF = new Level("OFF", Integer.MIN_VALUE);
-	
+
 	public static final Level INFO = new Level("INFO", 100);
-	
+
 	public static final Level WARN = new Level("WARN", 200);
-	
+
 	public static final Level DEBUG = new Level("DEBUG", 300);
-	
+
 	public static final Level ERROR = new Level("ERROR", 400);
-	
+
 	public static final Level TRACE = new Level("TRACE", Integer.MAX_VALUE);
-	
+
 }

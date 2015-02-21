@@ -11,7 +11,7 @@ import java.util.Properties;
  * @author mhgeay, kadary
  * @version 1.0
  */
-public class ConfigFromProperties extends AbstractConfigurator {
+public class DefaultConfigurator extends AbstractConfigurator {
 
 	public final static Properties config = new Properties();
 
@@ -22,7 +22,7 @@ public class ConfigFromProperties extends AbstractConfigurator {
 	 * @return Properties config
 	 */
 
-	public ConfigFromProperties() {
+	public DefaultConfigurator() {
 		
 		setConfigFilePath("JavaLogger.properties");
 
@@ -32,7 +32,7 @@ public class ConfigFromProperties extends AbstractConfigurator {
 			configFileStream = new FileInputStream(getConfigFilePath());
 			try {
 				config.load(configFileStream);
-				//	System.out.println(config.toString());
+				//System.out.println(config.toString());
 				configFileStream.close();
 			} 
 			catch (IOException e) {
