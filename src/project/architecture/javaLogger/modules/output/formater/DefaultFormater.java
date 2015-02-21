@@ -26,7 +26,7 @@ public class DefaultFormater extends AbstractFormater {
 				this.separator = (String) settings.get(Key.Separator.name());
 			}
 			catch (ClassCastException e) {
-				System.out.println("Please check your default separator, it must be a char: ");
+				System.out.println("Please check your default separator: ");
 				e.printStackTrace();
 				this.separator = "|";
 			}
