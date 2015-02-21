@@ -21,8 +21,18 @@ public class DefaultFormater extends AbstractFormater {
 		this.isFQCNEnabled = this.FQCNEnabled();
 		this.isLevelEnabled = this.levelEnabled();
 		this.isMessageEnabled = true;
-		
-		this.separator = "|";
+		if(settings.get((Key.Separator.name())) != null) {
+			try {
+				this.separator = (String) settings.get(Key.Separator.name());
+			}
+			catch (ClassCastException e) {
+				System.out.println("Please check your default separator, it must be a char: ");
+				e.printStackTrace();
+				this.separator = "|";
+			}
+		}
+		else 
+			this.separator = "|";
 	}
 	
 	public boolean isEnabled(String token) {	

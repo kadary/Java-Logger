@@ -32,4 +32,5 @@ public enum Key {
 	ShowLEVEL,
 	ShowDATE,
 	ShowFQCN,
+	Separator,
 }

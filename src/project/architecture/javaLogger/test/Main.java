@@ -23,8 +23,8 @@ public class Main {
 		
 		logger.addHandler(new ConsoleHandler());
 		//logger.addHandler(new FileHandler());
-		//logger.addHandler(new FileHandler("C:/Users/kadary/Desktop/log.log"));
-		logger.setFormater(new TestFormater());
+		//logger.addHandler(new FileHandler("C:/Users/kadary/Desktop/log.log", 5));
+		//logger.setFormater(new TestFormater());
 		//logger.setLevel(Level.INFO);
 		logger.setLevel(Level.WARN);
 		

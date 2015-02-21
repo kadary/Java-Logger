@@ -12,8 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import project.architecture.javaLogger.core.Level;
-import project.architecture.javaLogger.core.LogManager;
-import project.architecture.javaLogger.modules.config.Key;
 import project.architecture.javaLogger.modules.output.formater.Formater;
 
 /**
@@ -52,7 +50,7 @@ public class Printer {
 
 	}
 
-	public void write(Level level, String message, String fqcn, String handler, Formater formater, String logFilePath) {
+	public void write(Level level, String message, String fqcn, String handler, Formater formater, String logFilePath, int logFileLimitSize) {
 
 		Map<String, String> log = new HashMap<String, String>();
 
@@ -73,12 +71,12 @@ public class Printer {
 		}
 
 		else if (handler.equals(FileHandler.class.getName())) {
-			this.writeToFile(level, message, fqcn, FileHandler.class.getName(), formater, logFilePath);
+			this.writeToFile(level, message, fqcn, FileHandler.class.getName(), formater, logFilePath, logFileLimitSize);
 		}
 	}
 
 	private void writeToFile(Level level, String message, String fqcn, String name,
-			Formater formater, String logFilePath) {
+			Formater formater, String logFilePath, double logFileLimitSize) {
 		
 		Map<String, String> log = new HashMap<String, String>();
 
@@ -95,18 +93,8 @@ public class Printer {
 			}
 
 			fw = new FileWriter (logFile, true);
-			String fileSize = (String) LogManager.config.getSettings().get(Key.LogFileSize.name());
-			double limitSize = 0.0;
-			try {
-				limitSize = Double.parseDouble(fileSize.trim());
-				limitSize *= 1000; 
-			}
-			catch (NumberFormatException e) {
-				System.out.print("Your log file size is not readable, please check it => ");
-				e.printStackTrace();
-			}
 
-			this.writeInFile(fw, log, logFile, limitSize, formater);
+			this.writeInFile(fw, log, logFile, logFileLimitSize, formater);
 		}
 		catch (IOException exception) {
 			System.out.print("Unable to write in file => ");
