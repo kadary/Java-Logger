@@ -19,7 +19,7 @@ import project.architecture.javaLogger.modules.output.formater.Formater;
  *
  */
 public class Printer {
-	
+
 	private void writeInFile(FileWriter fw, Map<String, String> log, File logFile, double limitSize, Formater formater) throws IOException {
 
 		if (limitSize ==  0 || logFile.length() <= limitSize) {
@@ -35,7 +35,7 @@ public class Printer {
 			if(log.get("LEVEL") != null) {
 				fw.write(String.format(" %-5s %1s", log.get("LEVEL"), formater.getSeparator()));
 			}
-			
+
 			if(log.get("MESSAGE") != null) {
 				fw.write(String.format(" %-6s%n", log.get("MESSAGE")));
 			}
@@ -44,10 +44,37 @@ public class Printer {
 			//System.out.println("Log file size: " + logFile.length() + "Limit Size: " + limitSize);
 		}
 
-		else
-			//TODO Adeline verifie ICI la taille fileSize() puis fais une rotation
-			System.out.println("Adeline verifie la taille fileSize() puisfais une rotation");
-
+		else {
+			File folder = logFile.getParentFile();
+			int counter = 0;
+			for (final File fileEntry : folder.listFiles()) {
+				if (fileEntry.getName().contains(logFile.getName().split("\\.")[0])) {
+					if (fileEntry.getName().contains("_")) {
+						int max;
+						String[] tokens = fileEntry.getName().split("_");
+						String firstPart = tokens[tokens.length - 1];
+						if (firstPart != null && !firstPart.isEmpty()) {
+							if (firstPart.split("\\.")[0].matches("\\d+(\\.\\d+)?")) {
+								max = Integer.parseInt(firstPart.split("\\.")[0]);
+								if (counter < max) {
+									counter = max;
+								}
+							}
+						}
+					}						
+				}
+			}
+			counter += 1;
+			StringBuffer newName = new StringBuffer();
+			newName.append(logFile.getName().split("\\.")[0] + "_" + counter);  
+			if (logFile.getName().split("\\.").length > 1) {
+				newName.append("." + logFile.getName().split("\\.")[1]);
+			}
+			//System.out.println(newName.toString());
+			File newlogFile = new File(logFile.getParent() + "/" + newName.toString());
+			fw.close();
+			logFile.renameTo(newlogFile);
+		}
 	}
 
 	public void write(Level level, String message, String fqcn, String handler, Formater formater, String logFilePath, int logFileLimitSize) {
@@ -65,7 +92,7 @@ public class Printer {
 
 			if(log.get("LEVEL") != null)
 				System.out.printf(" %-5s %1s", log.get("LEVEL"), formater.getSeparator());
-			
+
 			if(log.get("MESSAGE") != null)
 				System.out.printf(" %-6s%n", log.get("MESSAGE"));
 		}
@@ -77,11 +104,11 @@ public class Printer {
 
 	private void writeToFile(Level level, String message, String fqcn, String name,
 			Formater formater, String logFilePath, double logFileLimitSize) {
-		
+
 		Map<String, String> log = new HashMap<String, String>();
 
 		log = this.initMap(log, level, fqcn, message, formater);	
-		
+
 		FileWriter fw = null;			
 		final File logFile = new File (logFilePath);
 		final File parent_directory = logFile.getParentFile();
@@ -110,7 +137,7 @@ public class Printer {
 			}
 		}	
 	}
-	
+
 	private Map<String, String> initMap(Map<String, String> log, Level level, String fqcn, String message, 
 			Formater formater) {
 		Date date = new Date();
@@ -128,7 +155,7 @@ public class Printer {
 		if (formater.isLevelEnabled()) {
 			log.put("LEVEL", level.getName());
 		}
-		
+
 		if (formater.isMessageEnabled()) {
 			log.put("MESSAGE", message);
 		}
