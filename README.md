@@ -1,11 +1,11 @@
 # Java Logger
 
-Un logger simple et puissant pour vos projets Java (aternative à Log4J, javaUtilLogging...)
+Un logger simple et puissant! Une aternative à Log4J, javaUtilLogging...
 
-* Sortie sur console et/ou dans un fichier texte
-* Logger utilisable très rapidement
-* Configurable avec un fichier simple et clair (properties)
-* Configuration au travers votre code Java
+* Facile à utiliser et à configurer
+* Journalisation à travers la console et/ou dans un fichier texte
+* Configuration à travers un fichier simple et clair (properties)
+* Configuration par programmation
 * Rotation des fichiers automatique en fonction de la taille
 
 Exemple de sortie sur console dans un projet sous Eclipse
