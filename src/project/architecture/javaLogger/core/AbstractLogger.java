@@ -128,12 +128,10 @@ public abstract class AbstractLogger implements Logger {
 		return isEnabled(Key.LevelDEBUG.name());
 	}
 
-	@Override
 	public boolean isTraceEnabled() {
 		return isEnabled(Key.LevelTrace.name());
 	}
 
-	@Override
 	public void addHandler(Handler handler) {
 		handlers.put(handler.getClass().getName(), handler);
 	}
@@ -151,12 +149,10 @@ public abstract class AbstractLogger implements Logger {
 		}
 	}
 
-	@Override
 	public void setLevel(Level levelFixed) {
 		this.levelFixed = levelFixed;
 	}
 
-	@Override
 	public void setFormater(Formater formater) {
 		this.formater = formater;
 	}
