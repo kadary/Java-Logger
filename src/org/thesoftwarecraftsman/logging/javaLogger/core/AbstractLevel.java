@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.core;
+package org.thesoftwarecraftsman.logging.javaLogger.core;
 
 /**
  * @author kadary

@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.modules.config;
+package org.thesoftwarecraftsman.logging.javaLogger.modules.config;
 
 import java.util.Enumeration;
 import java.util.Properties;

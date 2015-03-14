@@ -1,10 +1,10 @@
-package project.architecture.javaLogger.core;
+package org.thesoftwarecraftsman.logging.javaLogger.core;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import project.architecture.javaLogger.modules.config.Configurator;
-import project.architecture.javaLogger.modules.config.DefaultConfigurator;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.config.Configurator;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.config.DefaultConfigurator;
 
 /**
  * Principal class of Logger. it's must be imported in project by customer

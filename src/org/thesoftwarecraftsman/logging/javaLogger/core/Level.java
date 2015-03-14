@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.core;
+package org.thesoftwarecraftsman.logging.javaLogger.core;
 
 
 /**
@@ -22,17 +22,36 @@ public class Level extends AbstractLevel {
 
 	public static Level getLevel(String levelName) {
 		Level level;
-		switch (levelName) {
-		case "INFO":
+		int value = 0;
+		//Transform string to Int for switch case compatibility (Java 5)
+		if (levelName.equalsIgnoreCase("INFO")) {
+			value = 1;
+		}
+		else if (levelName.equalsIgnoreCase("WARN")) {
+			value= 2;
+		}
+		else if (levelName.equalsIgnoreCase("DEBUG")) {
+			value = 3;
+		}
+		
+		else if (levelName.equalsIgnoreCase("ERROR")) {
+			value = 4;
+		}
+		else {
+			value = 5;
+		}
+		
+		switch (value) {
+		case 1:
 			level = Level.INFO;
 			break;
-		case "WARN":
+		case 2:
 			level = Level.WARN;
 			break;
-		case "DEBUG":
+		case 3:
 			level = Level.DEBUG;
 			break;
-		case "ERROR":
+		case 4:
 			level = Level.ERROR;
 			break;
 		default:

@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.modules.output.formater;
+package org.thesoftwarecraftsman.logging.javaLogger.modules.output.formater;
 
 import java.util.List;
 

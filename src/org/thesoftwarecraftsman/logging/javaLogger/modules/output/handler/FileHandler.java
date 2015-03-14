@@ -1,11 +1,11 @@
-package project.architecture.javaLogger.modules.output.handler;
+package org.thesoftwarecraftsman.logging.javaLogger.modules.output.handler;
 
 import java.util.Properties;
 
-import project.architecture.javaLogger.core.Level;
-import project.architecture.javaLogger.core.LogManager;
-import project.architecture.javaLogger.modules.config.Key;
-import project.architecture.javaLogger.modules.output.formater.Formater;
+import org.thesoftwarecraftsman.logging.javaLogger.core.Level;
+import org.thesoftwarecraftsman.logging.javaLogger.core.LogManager;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.config.Key;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.output.formater.Formater;
 
 /**
  * @author kadary

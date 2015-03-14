@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.modules.output.formater;
+package org.thesoftwarecraftsman.logging.javaLogger.modules.output.formater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,27 +19,21 @@ public abstract class AbstractFormater implements Formater {
 	
 	
 
-	@Override
 	public String getSeparator() {
 		return separator;
 	}
-	@Override
 	public List<String> getOthers() {
 		return other;
 	}
-	@Override
 	public boolean isLevelEnabled() {
 		return isLevelEnabled;
 	}
-	@Override
 	public boolean isMessageEnabled() {
 		return isMessageEnabled;
 	}
-	@Override
 	public boolean isDateEnabled() {
 		return isDateEnabled;
 	}
-	@Override
 	public boolean isFQCNEnabled() {
 		return isFQCNEnabled;
 	}

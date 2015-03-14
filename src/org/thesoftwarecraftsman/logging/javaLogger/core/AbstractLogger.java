@@ -1,4 +1,4 @@
-package project.architecture.javaLogger.core;
+package org.thesoftwarecraftsman.logging.javaLogger.core;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -6,13 +6,13 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import project.architecture.javaLogger.modules.config.Key;
-import project.architecture.javaLogger.modules.output.formater.DefaultFormater;
-import project.architecture.javaLogger.modules.output.formater.Formater;
-import project.architecture.javaLogger.modules.output.handler.ConsoleHandler;
-import project.architecture.javaLogger.modules.output.handler.DataBaseHandler;
-import project.architecture.javaLogger.modules.output.handler.FileHandler;
-import project.architecture.javaLogger.modules.output.handler.Handler;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.config.Key;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.output.formater.DefaultFormater;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.output.formater.Formater;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.output.handler.ConsoleHandler;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.output.handler.DataBaseHandler;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.output.handler.FileHandler;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.output.handler.Handler;
 
 
 /**

@@ -1,7 +1,7 @@
-package project.architecture.javaLogger.core;
+package org.thesoftwarecraftsman.logging.javaLogger.core;
 
-import project.architecture.javaLogger.modules.output.formater.Formater;
-import project.architecture.javaLogger.modules.output.handler.Handler;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.output.formater.Formater;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.output.handler.Handler;
 
 
 

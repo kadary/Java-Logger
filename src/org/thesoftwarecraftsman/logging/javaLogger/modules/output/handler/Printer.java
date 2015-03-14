@@ -1,7 +1,7 @@
 /**
  * 
  */
-package project.architecture.javaLogger.modules.output.handler;
+package org.thesoftwarecraftsman.logging.javaLogger.modules.output.handler;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -11,8 +11,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import project.architecture.javaLogger.core.Level;
-import project.architecture.javaLogger.modules.output.formater.Formater;
+import org.thesoftwarecraftsman.logging.javaLogger.core.Level;
+import org.thesoftwarecraftsman.logging.javaLogger.modules.output.formater.Formater;
 
 /**
  * @author kadary
