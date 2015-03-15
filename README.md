@@ -1,6 +1,6 @@
 # Java Logger
 
-Un logger simple et puissant! Une aternative Ã  Log4J, javaUtilLogging...
+Un logger simple et puissant! Une aternative à Log4J, javaUtilLogging...
 
 * Peut être intégré comme librairie externe dans votre projet
 * Peut être inclus comme dépendance maven dans votre POM
