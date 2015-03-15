@@ -4,9 +4,9 @@ Un logger simple et puissant! Une aternative à Log4J, javaUtilLogging...
 
 * Peut être intégré comme librairie externe dans votre projet
 * Peut être inclus comme dépendance maven dans votre POM
-* Facile Ã  utiliser et Ã  configurer
-* Journalisation Ã  travers la console et/ou dans un fichier texte
-* Configuration Ã  travers un fichier simple et clair (properties)
+* Facile à utiliser et à configurer
+* Journalisation à travers la console et/ou dans un fichier texte
+* Configuration à travers un fichier simple et clair (properties)
 * Configuration par programmation
 * Rotation des fichiers automatique en fonction de la taille
 
