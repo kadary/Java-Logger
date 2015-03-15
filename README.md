@@ -2,8 +2,8 @@
 
 Un logger simple et puissant! Une aternative à Log4J, javaUtilLogging...
 
-* Peut �tre int�gr� comme librairie externe dans votre projet
-* Peut �tre inclus comme d�pendance maven dans votre POM
+* Peut être intégré comme librairie externe dans votre projet
+* Peut être inclus comme dépendance maven dans votre POM
 * Facile à utiliser et à configurer
 * Journalisation à travers la console et/ou dans un fichier texte
 * Configuration à travers un fichier simple et clair (properties)
@@ -19,4 +19,3 @@ Exemple de sortie sur console dans un projet sous Eclipse
 Vous trouverez toute la documentation (utilisation et conception) sur le wiki Github avec des exemples.
 
 https://github.com/demkada/Java-Logger/wiki
-
