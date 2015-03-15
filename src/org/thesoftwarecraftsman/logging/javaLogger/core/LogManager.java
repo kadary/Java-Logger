@@ -19,9 +19,8 @@ public class LogManager {
 	
 	/**
 	 * Return string log
-	 * @param <T>
-	 * @param name [Fully-Qualified Class Name]
-	 * @return Full log : Date+Time FQCN Level Log message
+	 * @param targetClass the class from witch the logger will get its identifier
+	 * @return logger  A new logger or stored one
 	 */
 	public <T> Logger getLogger(Class<T> targetClass) {
 		if (targetClass != null) {

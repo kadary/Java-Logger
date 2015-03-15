@@ -10,10 +10,9 @@
 	<groupId>org.thesoftwarecraftsman.logging</groupId>
 	<artifactId>javaLogger</artifactId>
 	<version>1.0.1</version>
-	<name>Java Logging Framework</name>
+	<name>${project.groupId}:${project.artifactId}</name>
 	<description>A simple and powerful logging framework to use as an alternative to Log4J, javaUtilLogging ...</description>
 	<url>https://github.com/demkada/Java-Logger</url>
-
 
 	<scm>
 		<url>https://github.com/demkada/Java-Logger.git</url>

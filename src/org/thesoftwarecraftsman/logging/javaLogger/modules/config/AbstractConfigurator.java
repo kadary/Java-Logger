@@ -16,7 +16,6 @@ public abstract class AbstractConfigurator implements Configurator {
 	/**
 	 * Return the local path of configuration file
 	 * @author mhgeay
-	 * @param NONE
 	 * @return File path
 	 */
 	public String getConfigFilePath() {
@@ -24,10 +23,9 @@ public abstract class AbstractConfigurator implements Configurator {
 	}
 
 	/**
-	 * Set the local file path
+	 * Set the log file path
 	 * @author mhgeay
-	 * @param Local file path
-	 * @return NONE
+	 * @param path Log file path
 	 */
 	public void setConfigFilePath(String path) {
 		AbstractConfigurator.path = path;

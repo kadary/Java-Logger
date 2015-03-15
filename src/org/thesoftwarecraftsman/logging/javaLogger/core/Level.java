@@ -2,7 +2,7 @@ package org.thesoftwarecraftsman.logging.javaLogger.core;
 
 
 /**
- * Herited class with our 6 log levels : TRACE > ERROR > DEBUG > WARM > INFO > OFF
+ * Herited class with our 6 log levels : TRACE - ERROR - DEBUG - WARM - INFO - OFF
  * off - Logger disabled
  * error - Other runtime errors or unexpected conditions. Expect these to be immediately visible on a status console.
  * warn - Use of deprecated APIs, poor use of API, 'almost' errors, other runtime situations that are undesirable or unexpected, but not necessarily "wrong". Expect these to be immediately visible on a status console.

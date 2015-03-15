@@ -17,8 +17,7 @@ import org.thesoftwarecraftsman.logging.javaLogger.modules.output.handler.Handle
 
 /**
  * @author kadary
- * @version 1.0
- * @param <V>
+ *
  */
 public abstract class AbstractLogger implements Logger {
 
@@ -88,6 +87,7 @@ public abstract class AbstractLogger implements Logger {
 	public abstract void error(String message);
 
 
+	
 	private String getFQCN() {
 		return fqcn;
 	}

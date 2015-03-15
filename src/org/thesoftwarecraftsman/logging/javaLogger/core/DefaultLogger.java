@@ -3,9 +3,8 @@ package org.thesoftwarecraftsman.logging.javaLogger.core;
 
 
 /**
- * ???
  * @author kadary
- * version 1.0
+ *
  */
 public class DefaultLogger extends AbstractLogger {
 

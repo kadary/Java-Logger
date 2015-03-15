@@ -7,9 +7,7 @@ import org.thesoftwarecraftsman.logging.javaLogger.core.Level;
 import org.thesoftwarecraftsman.logging.javaLogger.modules.output.formater.Formater;
 
 /**
- * Choose of information stored
  * @author kadary
- * @verion 1.0
  */
 public interface Handler {
 	

@@ -16,12 +16,6 @@ public class DefaultConfigurator extends AbstractConfigurator {
 	public final static Properties config = new Properties();
 
 
-	/**
-	 * Return the content of Properties file
-	 * @param NONE
-	 * @return Properties config
-	 */
-
 	public DefaultConfigurator() {
 		
 		setConfigFilePath("JavaLogger.properties");
